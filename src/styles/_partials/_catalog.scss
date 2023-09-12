@@ -1,0 +1,126 @@
+.catalog_info {
+  padding: 5rem 0;
+}
+.catalog_info_block {
+  display: flex;
+  align-items: center;
+  .items_quantity {
+    color: #dfdfdf;
+    font-size: 3.2rem;
+    margin-left: 1rem;
+  }
+}
+//  Catalog nav start
+.catalog_menu {
+  padding-top: 10rem;
+  box-shadow: 0px 0px 17px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding-bottom: 1rem;
+}
+.catalog_menu_items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 13rem);
+  gap: 2rem;
+  justify-content: space-around;
+  margin-bottom: 6rem;
+}
+.catalog_menu_item {
+  display: grid;
+  grid-template-rows: auto;
+  justify-content: center;
+  gap: 1rem;
+  &:hover img {
+    transform: scale(1.1);
+  }
+  img {
+    transition: transform 0.3s ease 0s;
+    object-fit: contain;
+    width: 120px !important;
+    height: 120px !important;
+  }
+}
+//  Catalog nav END
+
+// CATALOG CONTENT START
+.content {
+  padding-bottom: 4rem;
+}
+.content_wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.content_items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 285px));
+  justify-content: center;
+
+  .content_item {
+    background: linear-gradient(127.25deg, #f1f1f1 0%, #f6f6f6 73.74%);
+    padding: 1.5rem 1.5rem 4rem;
+    display: none;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2rem 5rem 25rem 4rem 4rem;
+    gap: 1.2rem;
+    margin-left: 0px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    &.visible {
+      display: grid;
+    }
+    & > * {
+      z-index: 3;
+    }
+    // position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      transform: translate(50%, -50%);
+      opacity: 0;
+      background-color: #fafafa;
+      width: 0px;
+      height: 0px;
+      transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+      /* border-radius: 50%; */
+      z-index: 2;
+    }
+    &:hover::before {
+      width: 300%;
+      height: 300%;
+      opacity: 1;
+    }
+    .content_code_item {
+      color: #7c8087;
+    }
+    a {
+      color: inherit;
+    }
+    .item_img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+    }
+    .item_price {
+      font-size: 1.8rem;
+      font-weight: 500;
+      line-height: 2.2rem;
+      text-align: center;
+    }
+    .item_btn_section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 0 2rem;
+      align-items: center;
+    }
+  }
+}
+
+// CATALOG CONTENT END

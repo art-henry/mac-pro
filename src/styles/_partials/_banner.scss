@@ -1,0 +1,70 @@
+.banner {
+  width: 100%;
+  position: relative;
+}
+
+.banner_content {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 4rem 0;
+  max-height: 400px;
+  i {
+    svg {
+      fill: $main_text_color;
+    }
+  }
+}
+
+.banner_image {
+  max-width: 60%;
+  object-fit: contain;
+  max-height: 100%;
+}
+
+.banner_info_section {
+  * {
+    font-family: microsoft_new_tai_lueregular !important;
+  }
+  min-width: 610px;
+  margin-right: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .banner_title_block {
+    font-size: 6rem;
+    line-height: 6rem;
+    i {
+      svg {
+        height: 5rem;
+        width: auto;
+        margin-left: 1.5rem;
+        transform: translateY(2%);
+      }
+    }
+  }
+
+  .banner_text_block {
+    display: flex;
+    align-items: center;
+    font-size: 2.5rem;
+    color: $gray;
+    .dash {
+      font-weight: 700;
+      font-size: 4rem;
+      margin: 0 1.5rem;
+    }
+  }
+  .banner_link_section {
+    display: flex;
+    align-items: center;
+    gap: 4.5rem;
+    margin-top: 2rem;
+    .city {
+      font-size: 4rem;
+      min-width: 200px;
+      text-transform: uppercase;
+    }
+  }
+}

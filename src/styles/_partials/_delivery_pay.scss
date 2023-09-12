@@ -1,0 +1,49 @@
+.delivery-payment {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border: 1px solid $light_gray;
+  border-radius: 8px;
+  width: 80%;
+  margin: 2rem auto;
+}
+
+.delivery-payment__title {
+  font-size: 2.4rem;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.delivery,
+.payment {
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delivery__title,
+.payment__title {
+  font-size: 2rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.delivery__description,
+.payment__description {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.delivery__list,
+.payment__list {
+  list-style-type: disc;
+  margin-left: 2rem;
+  font-size: 1.6rem;
+}
+
+.delivery__list li,
+.payment__list li {
+  margin-bottom: 0.5rem;
+}

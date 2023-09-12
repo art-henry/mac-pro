@@ -1,0 +1,12 @@
+.footer_section {
+  margin-top: 2rem;
+  padding: 2rem 0;
+
+  background-color: $dark_bg;
+  justify-content: space-around;
+  &__block-name {
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+}

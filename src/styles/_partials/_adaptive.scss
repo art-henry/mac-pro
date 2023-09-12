@@ -1,0 +1,471 @@
+@media (max-width: 1600px) {
+  .container {
+    padding: 0px 2rem;
+  }
+  .banner {
+    padding: 0 2rem;
+  }
+  .banner_info_section {
+    min-width: 530px;
+    .banner_title_block {
+      font-size: 5rem;
+      line-height: 5rem;
+      i {
+        svg {
+          height: 4rem;
+          width: auto;
+          transform: translateY(5%);
+        }
+      }
+    }
+    .banner_text_block {
+      font-size: 2rem;
+    }
+    .banner_link_section {
+      .city {
+        font-size: 3.5rem;
+      }
+    }
+  }
+  .btn {
+    .btn_banner {
+      font-size: 2rem;
+    }
+  }
+}
+@media (max-width: 1440px) {
+  .banner_info_section {
+    max-width: 50%;
+    min-width: auto;
+    margin-right: 3rem;
+    .banner_title_block {
+      font-size: 4rem;
+      line-height: 4rem;
+      i {
+        svg {
+          height: 3.4rem;
+          transform: translateY(2%);
+        }
+      }
+    }
+    .banner_text_block {
+      font-size: 1.8rem;
+    }
+    .banner_info_section {
+      margin-top: 1.5rem;
+    }
+    .banner_link_section {
+      margin-top: 1.5rem;
+      .city {
+        font-size: 2.5rem;
+        min-width: 170px;
+      }
+    }
+  }
+  .banner_image {
+    max-width: 50%;
+  }
+  .btn {
+    &.btn_banner {
+      font-size: 2rem;
+    }
+  }
+  .swiper {
+    max-width: 360px;
+  }
+  .mySwiper2 {
+    max-width: 360px;
+  }
+  .mySwiper {
+    max-height: 70%;
+  }
+  .swiper-button-next {
+    left: 3.7rem;
+    bottom: 8rem;
+    i {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 1199.5px) {
+  .banner_info_section {
+    .banner_title_block {
+      font-size: 3rem;
+      line-height: 3rem;
+      i {
+        svg {
+          height: 2.7rem;
+        }
+      }
+    }
+    .banner_text_block {
+      font-size: 1.5rem;
+      .dash {
+        font-size: 3rem;
+      }
+    }
+
+    .banner_link_section {
+      margin-top: 1.5rem;
+      .city {
+        font-size: 2rem;
+        min-width: 120px;
+      }
+    }
+  }
+  .banner_image {
+    max-width: 60%;
+  }
+  .btn {
+    &.btn_banner {
+      padding: 0.5rem 1.5rem;
+      font-size: 1.5rem;
+    }
+  }
+  .swiper {
+    max-width: 360px;
+  }
+  .mySwiper2 {
+    max-width: 360px;
+  }
+  .mySwiper {
+    // position: static;
+    max-height: inherit;
+    padding: 0px 10px;
+  }
+  .swiper-button-next {
+    // display: none;
+    left: 2.4rem;
+    bottom: -2.4rem;
+    i {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 991.5px) {
+  header {
+    background-color: transparent;
+    padding: 0;
+  }
+  .header_content {
+    height: 100%;
+    padding: 2rem 0 0;
+    .logo {
+      display: none;
+    }
+    nav {
+      display: none;
+    }
+  }
+  .anchor {
+    top: -3rem;
+  }
+  .nav_menu {
+    display: none !important;
+  }
+  // .catalog_menu {
+  //   display: none !important;
+  // }
+  .catalog_menu_items {
+    grid-template-columns: repeat(auto-fit, 10rem);
+    margin-bottom: 5rem;
+    gap: 4rem;
+  }
+  .catalog_menu_item {
+    gap: 0;
+    img {
+      max-width: 100% !important;
+      max-height: 100% !important;
+    }
+  }
+
+  // Banner
+  .banner_content {
+    flex-direction: column-reverse;
+    padding: 1rem 0 3rem;
+    max-height: fit-content;
+  }
+  .banner_icon {
+    display: block;
+    order: 2;
+    i {
+      svg {
+        width: 6rem;
+        height: 6rem;
+      }
+    }
+  }
+
+  .banner_image {
+    max-width: 100%;
+  }
+  .banner_info_section {
+    max-width: 100%;
+    margin-right: 0;
+    margin-top: 6rem;
+    .banner_title_block {
+      font-size: 4rem;
+      line-height: 4rem;
+      i {
+        svg {
+          height: 3.4rem;
+          transform: translateY(4%);
+        }
+      }
+    }
+    .banner_text_block {
+      font-size: 1.8rem;
+    }
+    .banner_link_section {
+      .city {
+        font-size: 2.5rem;
+        min-width: 155px;
+      }
+    }
+  }
+  .btn {
+    &.btn_banner {
+      padding: 0.5rem 2rem;
+      font-size: 2rem;
+    }
+  }
+
+  // swiper START
+  .swiper {
+    max-width: 360px;
+  }
+  .mySwiper2 {
+    max-width: 360px;
+  }
+  .mySwiper {
+    position: relative;
+    max-height: inherit;
+    padding: 0px 10px;
+  }
+  .swiper-button-next {
+    display: none;
+  }
+  // swiper END
+
+  // PRODUCT CONTENT START
+  .product_content {
+    .grid_container {
+      grid-template-columns: 1fr;
+      gap: 10rem;
+    }
+  }
+
+  // PRODUCT CONTENT END
+
+  // Product description links START
+  .item_section .product_description_container .product_description_links {
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 7rem;
+
+    // background-color: inherit;
+  }
+  .item_section
+    .product_description_container
+    .product_descr
+    .product_descr_block {
+    padding: 2rem 0;
+    &.block7 {
+      padding: 0 2rem;
+    }
+    .product_descr_block_section.triple {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .content_wrapper {
+    padding: 0 2rem;
+  }
+  .content_items {
+    grid-template-columns: repeat(auto-fit, minmax(285px, 0.5fr));
+    .content_item {
+      padding: 1.5rem 3.5rem 4rem;
+      grid-template-rows: 2rem 6rem 25rem 4rem 4rem;
+    }
+  }
+
+  // Product description links END
+
+  // Modal
+}
+
+@media (max-width: 768px) {
+  // Banner
+
+  .banner_info_section {
+    .banner_title_block {
+      font-size: 3.5rem;
+      line-height: 3.5rem;
+      i {
+        svg {
+          height: 3rem;
+          transform: translateY(2%);
+        }
+      }
+    }
+    .banner_text_block {
+      font-size: 1.6rem;
+    }
+    .banner_link_section {
+      .city {
+        font-size: 2.2rem;
+        min-width: 135px;
+      }
+    }
+  }
+  .btn {
+    &.btn_banner {
+      padding: 0.5rem 2rem;
+      font-size: 1.8rem;
+    }
+  }
+  .item_section {
+    & .item_title {
+      font-size: 20px;
+      line-height: 24px;
+    }
+    .product_info-small {
+      justify-content: end;
+      .grid_container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .rating-area .star {
+      width: 2rem;
+      height: 2rem;
+      background-size: 2rem;
+    }
+    .product_description_container
+      .product_descr
+      .product_descr_block
+      .product_descr_block_section {
+      grid-template-columns: 1fr;
+      grid-gap: 2rem;
+    }
+    .product_description_container .review_section .video_review_section {
+      height: 250px;
+    }
+    .product_content .product_selection .buy_buttons_section {
+      grid-template-columns: 1fr;
+    }
+  }
+  .content_wrapper {
+    padding: 0;
+  }
+  .content_items {
+    .content_item {
+      grid-template-rows: 2rem 6rem 25rem 5rem 4rem;
+    }
+  }
+}
+@media (max-width: 480px) {
+  // Banner
+  .banner {
+    padding: 0 1rem;
+  }
+
+  .banner_icon {
+    i {
+      svg {
+        width: 4rem;
+        height: 4rem;
+      }
+    }
+  }
+  .banner_info_section {
+    .banner_title_block {
+      font-size: 2.4rem;
+      line-height: 2.4rem;
+      i {
+        svg {
+          height: 2.1rem;
+        }
+      }
+    }
+    .banner_text_block {
+      font-size: 1.3rem;
+    }
+    .banner_link_section {
+      .city {
+        font-size: 2rem;
+        min-width: auto;
+      }
+    }
+    .btn {
+      &.btn_banner {
+        padding: 0.5rem 1.5rem;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .catalog_menu_items {
+    .items_name {
+      font-size: 1.5rem;
+    }
+  }
+  .item_section {
+    .product_info-small {
+      justify-content: start;
+      .grid_container {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+  .mySwiper2 {
+    max-width: 280px;
+  }
+  .swiper {
+    max-width: 250px;
+  }
+
+  html {
+    font-size: 57%;
+  }
+  .title_main_blog {
+    font-size: 2.8rem;
+  }
+  .item_section .product_description_container .specs_list {
+    gap: 0.5rem;
+  }
+  .item_section
+    .product_description_container
+    .review_section
+    .video_review_section {
+    height: 170px;
+  }
+  .faq {
+    .faq-quest,
+    .faq-content {
+      font-size: 1rem;
+    }
+  }
+  .delivery__list,
+  .payment__list {
+    margin-left: 0;
+  }
+  .content_items {
+    grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+    .content_item {
+      padding: 1.5rem 5.5rem 4rem;
+    }
+  }
+  .modal-content {
+    left: 10%;
+    right: 10%;
+    top: 10%;
+    transform: inherit;
+  }
+}
+@media (min-width: 992px) {
+  .button_mobimenu_container,
+  .aside_nav_menu {
+    display: none !important;
+  }
+}

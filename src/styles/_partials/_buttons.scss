@@ -1,0 +1,110 @@
+button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  text-align: inherit;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.btn {
+  border-radius: 32px;
+  border: 1px solid;
+  font-weight: 500;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  &.btn_blue {
+    background-color: $hover_blue;
+    border-color: $hover_blue;
+    color: #fff;
+    &__middle {
+      font-size: 1.6rem;
+      height: 5rem;
+    }
+    &__small {
+      font-size: 1.4rem;
+      height: 4rem;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $hover_light_blue;
+      background: $hover_light_blue;
+    }
+  }
+  &.btn_white_middle {
+    font-size: 1.6rem;
+    height: 5rem;
+    background-color: #fff;
+    border-color: $light_black;
+    color: $light_black;
+    &:hover,
+    &:focus {
+      background-color: rgb(212, 226, 252);
+      color: rgb(86, 141, 254);
+    }
+  }
+
+  &.btn_transparent_small {
+    border: none;
+    color: $hover_blue !important;
+    &:hover {
+      color: $hover_light_blue !important;
+    }
+  }
+  &.btn_banner {
+    padding: 0.5rem 2rem;
+    font-size: 2.5rem;
+    font-weight: 500;
+    border: 2px solid;
+    opacity: 0.6;
+  }
+}
+
+.share_button {
+  display: flex;
+  align-items: center;
+  & svg {
+    fill: $gray;
+    stroke: $gray;
+  }
+}
+
+.ant-back {
+  position: fixed;
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  display: none;
+  place-content: center;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  svg {
+    fill: $gray;
+    transform: rotate(180deg);
+  }
+  &.top {
+    position: fixed;
+    bottom: 220px;
+    right: 40px;
+  }
+  &.left {
+    bottom: 76px;
+    right: 40px;
+    display: none;
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+}

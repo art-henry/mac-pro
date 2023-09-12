@@ -1,0 +1,9 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.grid_container {
+  display: grid;
+  grid-template-columns: 62.5% 1fr; /* 1fr автоматично займає решту доступного місця */
+}

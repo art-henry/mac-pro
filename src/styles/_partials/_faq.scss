@@ -1,0 +1,87 @@
+/*FAQ*/
+
+.faq-container {
+  display: grid;
+  row-gap: 1rem;
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto 2rem;
+}
+@media (max-width: 1179px) {
+  .faq-container.page {
+    grid-column: 2/3;
+  }
+}
+@media (min-width: 1180px) {
+  .faq-container.page {
+    max-width: 72rem;
+  }
+}
+.faq-container.page h2 {
+  padding: 0 1rem 0 1rem;
+}
+.faq-container h3 {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+@media (max-width: 1023px) {
+  .faq-container h3 {
+    text-align: center;
+  }
+}
+@media (min-width: 1024px) {
+  .faq-container {
+    grid-column: 1/-1;
+    padding-bottom: 2rem;
+  }
+  .faq-container h3 {
+    text-align: left;
+  }
+}
+
+.faq {
+  display: grid;
+  background-color: #ffffff;
+  border: none;
+  overflow: hidden;
+  border-radius: 0.8rem;
+}
+
+.faq .faq-quest {
+  padding: 0.8rem 3rem 0.8rem 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  z-index: 11;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: 1.4rem;
+  background-position: center right 0.7rem;
+  user-select: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 23.66 23.66'%3E%3Cdefs%3E%3Cstyle%3E.a,.b%7Bfill:none;%7D.a%7Bstroke:%23000;stroke-linecap:round;stroke-miterlimit:10;stroke-width:2px;%7D%3C/style%3E%3C/defs%3E%3Cline class='a' x1='11.83' y1='2.88' x2='11.83' y2='20.78'/%3E%3Cline class='a' x1='20.78' y1='11.83' x2='2.88' y2='11.83'/%3E%3Crect class='b' width='23.66' height='23.66'/%3E%3C/svg%3E");
+}
+.faq.open .faq-quest {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 23.66 23.66'%3E%3Cdefs%3E%3Cstyle%3E.a,.b%7Bfill:none;%7D.a%7Bstroke:%23000;stroke-linecap:round;stroke-miterlimit:10;stroke-width:2px;%7D%3C/style%3E%3C/defs%3E%3Cline class='a' x1='20.78' y1='11.83' x2='2.88' y2='11.83'/%3E%3Crect class='b' width='23.66' height='23.66'/%3E%3C/svg%3E");
+}
+
+.faq .faq-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+  padding: 0rem 1rem 0rem 1.2rem;
+}
+
+.faq .faq-content p {
+  display: block;
+  margin: 1rem 0 1rem 0;
+}
+.faq .faq-content p:first-child {
+  margin: 0 0 1rem 0;
+}
+.faq .faq-content p:last-child {
+  margin: 0 0 1.4rem 0;
+}
+.faq .faq-content ul {
+  padding: 0 0 0 1.2rem;
+  margin: 0 0 1rem 0;
+}

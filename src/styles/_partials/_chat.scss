@@ -1,0 +1,39 @@
+.chat_section {
+  position: fixed;
+  z-index: 1100;
+  bottom: 148px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.chat {
+  margin-top: 25px;
+  height: 48px;
+  border-radius: 50%;
+  padding: 0px;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  border: transparent;
+  background: rgb(86, 141, 254);
+  width: 48px !important;
+  &:active {
+    transform: scale(1.1) !important;
+    transition: transform 500ms ease 0s !important;
+  }
+}
+.telegram-chat,
+.whats-app-chat {
+  display: none;
+  &.visible {
+    display: flex;
+    svg {
+      height: 30px;
+    }
+  }
+}

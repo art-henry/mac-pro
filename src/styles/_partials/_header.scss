@@ -1,0 +1,135 @@
+header {
+  background-color: $dark_bg;
+
+  padding: 0.36rem 2.29rem;
+}
+.header_content {
+  font-size: 1.5rem;
+  color: #fff;
+  position: sticky;
+  flex: 0 0 100%;
+  align-items: center;
+  top: -1px;
+  z-index: 999;
+  height: 4.29rem;
+
+  display: flex;
+
+  & .button_mobimenu_container {
+    margin-right: 1.9rem;
+  }
+  .button_mobimenu_icon {
+    svg {
+      fill: $dark_bg;
+      height: 5rem;
+      width: auto;
+    }
+  }
+
+  & .logo {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-right: 8.5rem;
+
+    height: 100%;
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+  }
+  .header_nav {
+    flex: 5;
+  }
+  & .nav_menu {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    appearance: none;
+    position: relative;
+    &__item {
+      font-size: 1.5rem;
+
+      &:hover ~ .hover_block {
+        opacity: 1;
+        visibility: visible;
+      }
+      &:focus ~ .hover_block {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    & .hover_block {
+      opacity: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 8px 18px 0px;
+      visibility: hidden;
+      position: absolute;
+      top: 2.1rem;
+      left: 0;
+      width: 65rem;
+      max-height: 80vh;
+      transition: opacity 300ms ease-in-out 0s;
+      z-index: 5;
+      opacity: 0; // Початково блок невидимий
+      transition: opacity 0.3s; // Додамо плавний перехід для видимості
+
+      &:hover,
+      &:focus-within {
+        opacity: 1; // Коли курсор миші наведено на блок або фокус в межах блоку
+        visibility: visible;
+      }
+    }
+    & .sub_menu {
+      color: $main_text_color;
+      border-radius: 18px;
+
+      margin-top: 1.9rem;
+      padding: 2.86rem 2.29rem;
+      max-width: 100%;
+      max-height: 100%;
+
+      z-index: 5;
+      background-color: #fff;
+
+      display: grid;
+      align-items: start;
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(15rem, 1fr)
+      ); // Це створює колонки, які мають принаймні 15rem завширшки, але розширяться, щоб заповнити доступний простір, якщо можливо.
+      gap: 3rem; // Відстань між рядами та колонками.
+      overflow-y: auto;
+      & ul {
+        padding-left: 0;
+        display: block;
+        & li {
+          padding-left: 2rem;
+          &:first-child {
+            background-color: #e6e6e6; /* Сірий колір фону */
+            font-weight: 500; /* Жирний шрифт */
+            padding: 5px 10px; /* Внутрішній відступ */
+            border-top-left-radius: 4px; /* Заокруглення кутів */
+            border-top-right-radius: 4px;
+            font-size: 1.22rem;
+          }
+          & + li {
+            margin-top: 0.58rem;
+          }
+          & a {
+            display: inline-block;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

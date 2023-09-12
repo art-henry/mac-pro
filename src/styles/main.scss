@@ -1,0 +1,31 @@
+@import "./_partials/variables";
+@import "./_partials/reset";
+@import "./_partials/fonts";
+@import "./_partials/helpers";
+@import "./_partials/containers";
+@import "./_partials/blocks";
+@import "./_partials/titles";
+@import "./_partials/item-colors";
+@import "./_partials/buttons";
+@import "./_partials/modal";
+@import "./_partials/banner";
+@import "./_partials/swiper";
+@import "./_partials/header";
+@import "./_partials/aside-menu";
+@import "./_partials/faq";
+@import "./_partials/star_feedback";
+@import "./_partials/product";
+@import "./_partials/catalog";
+@import "./_partials/chat";
+@import "./_partials/delivery_pay";
+@import "./_partials/footer";
+
+* {
+  font-family: SFProDisplay;
+}
+
+body {
+  background-color: $main_bg;
+}
+
+@import "./_partials/adaptive";
