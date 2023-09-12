@@ -307,6 +307,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
   // Функція для додавання нового елемента хлібної крошки
+  if (
+    window.location.pathname === "/" ||
+    window.location.pathname === "/index.html"
+  ) {
+    const breadCrumbContainer = document.querySelector(".breadCrumbContainer");
+    if (breadCrumbContainer) {
+      breadCrumbContainer.style.display = "none";
+    }
+  }
   function addBreadCrumb(itemName, targetGroup) {
     if (!breadCrumbList.querySelector("#homeCrumb")) {
       const homeLi = document.createElement("li");

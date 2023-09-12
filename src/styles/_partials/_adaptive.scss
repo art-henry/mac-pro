@@ -181,6 +181,22 @@
     }
   }
 
+  .item_section {
+    .product_description_container {
+      .product_specs {
+        padding: 3rem 0;
+      }
+      .product_description_links {
+        display: none;
+      }
+      .product_description_links.mobile {
+        margin-left: -2rem;
+        margin-right: -2rem;
+        display: flex;
+      }
+    }
+  }
+
   // Banner
   .banner_content {
     flex-direction: column-reverse;

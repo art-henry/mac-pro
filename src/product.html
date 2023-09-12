@@ -186,20 +186,30 @@
       <div class="container">
         <div class="header_content">
           <div class="button_mobimenu_container d-flex">
-            <svg>
-              <use xlink:href="#burger menu_new"></use>
-            </svg>
+            <div class="button_mobimenu_icon">
+              <i>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 376.5 512">
+                  <path
+                    d="M314.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C59.3 141.2 0 184.8 0 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
+                  />
+                </svg>
+              </i>
+            </div>
           </div>
-
           <a href="/" class="logo">
-            <img src="/uploads/34/iPro.png" alt="image iPro logo" />
+            <i>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 376.5 512">
+                <path
+                  d="M314.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C59.3 141.2 0 184.8 0 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
+                />
+              </svg>
+            </i>
           </a>
-
-          <nav class="d-flex align-items-center">
+          <nav class="d-flex align-items-center header_nav">
             <ul class="nav_menu">
               <li>
                 <a
-                  href="#"
+                  href="#catalog"
                   class="nav_menu__item filter-link"
                   data-target="group-iphone"
                   ><span class="item_name">iPhone</span></a
@@ -338,7 +348,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#catalog"
                   class="nav_menu__item filter-link"
                   data-target="group-macair"
                   ><span class="item_name">Macbook Air</span></a
@@ -476,7 +486,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#catalog"
                   class="nav_menu__item filter-link"
                   data-target="group-macpro"
                   ><span class="item_name">Macbook Pro</span></a
@@ -603,7 +613,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#catalog"
                   class="nav_menu__item filter-link"
                   data-target="group-imac"
                   ><span class="item_name">iMac</span></a
@@ -661,7 +671,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#catalog"
                   class="nav_menu__item filter-link"
                   data-target="group-macmini"
                   ><span class="item_name">Mac mini</span></a
@@ -1832,7 +1842,17 @@
                 </ul>
               </div>
             </section>
+            <div class="product_description_links mobile">
+              <a href="#specs" class="product_descr_link active"
+                >Características</a
+              >
+              <a href="#description" class="product_descr_link">Descripción</a>
 
+              <a href="#review" class="product_descr_link">Reseña en video</a>
+              <a href="#faq" class="product_descr_link">Pregunta-Respuesta</a>
+              <a href="#raiting" class="product_descr_link">Opiniones</a>
+              <a href="#delivery" class="product_descr_link">Envío y pago</a>
+            </div>
             <!-- DELIVERY PAYMENT END -->
           </div>
         </div>
@@ -1925,9 +1945,23 @@
     </footer>
     <!-- Aside -->
     <aside class="aside_nav_menu">
+      <div class="button_mobimenu_container">
+        <div class="button_mobimenu_icon">
+          <i>
+            <svg class="close_mobimenu">
+              <use xlink:href="#close"></use>
+            </svg>
+          </i>
+        </div>
+      </div>
+
       <ul>
         <li>
-          <a href="#" class="d-flex filter-link" data-target="group-iphone">
+          <a
+            href="#catalog"
+            class="d-flex filter-link"
+            data-target="group-iphone"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
               <path
                 d="M192 416c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32zM320 48v416c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h224c26.5 0 48 21.5 48 48zm-32 0c0-8.8-7.2-16-16-16H48c-8.8 0-16 7.2-16 16v416c0 8.8 7.2 16 16 16h224c8.8 0 16-7.2 16-16V48z"
@@ -1937,7 +1971,11 @@
           </a>
         </li>
         <li>
-          <a href="#" class="d-flex filter-link" data-target="group-macair">
+          <a
+            href="#catalog"
+            class="d-flex filter-link"
+            data-target="group-macair"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
               <path
                 d="M624 368h-48V96c0-35.3-28.72-64-64-64H128c-35.28 0-64 28.7-64 64v272H16c-8.84 0-16 7.16-16 16v48c0 44.11 35.88 80 80 80h480c44.12 0 80-35.89 80-80v-48c0-8.84-7.16-16-16-16zM96 96c0-17.67 14.33-32 32-32h384c17.67 0 32 14.33 32 32v272H391.13c-4.06 0-7.02 3.13-7.92 7.09C379.98 389.35 367.23 400 352 400h-64c-15.23 0-27.98-10.65-31.21-24.91-.9-3.96-3.86-7.09-7.92-7.09H96V96zm512 336c0 26.47-21.53 48-48 48H80c-26.47 0-48-21.53-48-48v-32h194.75c6.59 18.62 24.38 32 45.25 32h96c20.88 0 38.66-13.38 45.25-32H608v32z"
@@ -1947,7 +1985,11 @@
           </a>
         </li>
         <li>
-          <a href="#" class="d-flex filter-link" data-target="group-macpro">
+          <a
+            href="#catalog"
+            class="d-flex filter-link"
+            data-target="group-macpro"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
               <path
                 d="M624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"
@@ -1957,7 +1999,11 @@
           </a>
         </li>
         <li>
-          <a href="#" class="d-flex filter-link" data-target="group-imac">
+          <a
+            href="#catalog"
+            class="d-flex filter-link"
+            data-target="group-imac"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
               <path
                 d="M528 0H48C21.5 0 0 21.5 0 48v288c0 26.5 21.5 48 48 48h192l-24 96h-72c-8.8 0-16 7.2-16 16s7.2 16 16 16h288c8.8 0 16-7.2 16-16s-7.2-16-16-16h-72l-24-96h192c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM249 480l16-64h46l16 64h-78zm295-144c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16V48c0-8.8 7.2-16 16-16h480c8.8 0 16 7.2 16 16v288z"
@@ -1967,7 +2013,11 @@
           </a>
         </li>
         <li>
-          <a href="#" class="d-flex filter-link" data-target="group-macmini">
+          <a
+            href="#catalog"
+            class="d-flex filter-link"
+            data-target="group-macmini"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
               <path
                 d="M566.819 227.377L462.377 83.768A48.001 48.001 0 0 0 423.557 64H152.443a47.998 47.998 0 0 0-38.819 19.768L9.181 227.377A47.996 47.996 0 0 0 0 255.609V400c0 26.51 21.49 48 48 48h480c26.51 0 48-21.49 48-48V255.609a47.996 47.996 0 0 0-9.181-28.232zM139.503 102.589A16.048 16.048 0 0 1 152.443 96h271.115c5.102 0 9.939 2.463 12.94 6.589L524.796 224H51.204l88.299-121.411zM544 272v128c0 8.823-7.178 16-16 16H48c-8.822 0-16-7.177-16-16V272c0-8.837 7.163-16 16-16h480c8.837 0 16 7.163 16 16zm-56 64c0 13.255-10.745 24-24 24s-24-10.745-24-24 10.745-24 24-24 24 10.745 24 24zm-64 0c0 13.255-10.745 24-24 24s-24-10.745-24-24 10.745-24 24-24 24 10.745 24 24z"
