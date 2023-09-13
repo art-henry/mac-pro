@@ -63,12 +63,35 @@ button {
     }
   }
   &.btn_banner {
-    padding: 0.5rem 2rem;
+    padding: 0.8rem 2rem 0.5rem;
     font-size: 2.5rem;
     font-weight: 500;
     border: 2px solid;
     opacity: 0.6;
   }
+}
+
+.mobile_nav_btn {
+  position: fixed;
+  right: 0;
+  bottom: 300px;
+  z-index: 999;
+}
+.mobile_menu_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2rem;
+  outline: none;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: black;
+  margin: 6px auto;
+  display: block;
 }
 
 .share_button {

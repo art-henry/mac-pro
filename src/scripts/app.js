@@ -30,7 +30,6 @@ const prevPageURL = localStorage.getItem("prevPage");
 let toggle_btns = document.querySelectorAll(
   ".button_mobimenu_container, #overlay, aside li"
 );
-let burger_svg = document.querySelector(".button_mobimenu_container svg use");
 
 // Variables for Filter Items
 const menuItems = document.querySelectorAll("*.filter-link");
@@ -294,9 +293,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   toggle_btns.forEach(function (toggle_btn) {
     toggle_btn.addEventListener("click", function () {
+      // Toggle the class
       document.body.classList.toggle("mobile-menu-open");
+
+      // Find all elements that should have their 'aria-expanded' attribute toggled
+      const elementsToUpdate = document.querySelectorAll(
+        '[aria-haspopup="true"]'
+      );
+
+      elementsToUpdate.forEach((element) => {
+        const currentState = element.getAttribute("aria-expanded") === "true";
+        element.setAttribute("aria-expanded", !currentState);
+      });
     });
   });
+
+  // toggle_btns.forEach(function (toggle_btn) {
+  //   toggle_btn.addEventListener("click", function () {
+  //     document.body.classList.toggle("mobile-menu-open");
+  //   });
+  // });
 
   // BREADCRUMB
   breadCrumbList.addEventListener("click", function (e) {
@@ -392,14 +408,26 @@ document.addEventListener("DOMContentLoaded", function () {
   //   }
   // });
 
+  const contentItemsExist = document.querySelector(".content_items");
+
   menuItems.forEach((item) => {
+    // Встановлюємо aria-label відразу
+    const menuItemNameElement = item.querySelector(".item_name");
+    const itemName = menuItemNameElement ? menuItemNameElement.textContent : "";
+
+    if (itemName) {
+      item.setAttribute("aria-label", itemName);
+    }
+    if (!contentItemsExist) {
+      const hrefValue = item.getAttribute("href");
+      if (hrefValue && hrefValue.startsWith("#")) {
+        item.setAttribute("href", `/#${hrefValue.substring(1)}`);
+      }
+    }
+    // Подія кліку
     item.addEventListener("click", function (e) {
       // e.preventDefault();
       const targetGroup = item.getAttribute("data-target");
-      const menuItemNameElement = item.querySelector(".item_name");
-      const itemName = menuItemNameElement
-        ? menuItemNameElement.textContent
-        : "";
       // Зберегти дані для дій після завантаження
       localStorage.setItem(
         "postLoadAction",
@@ -409,6 +437,109 @@ document.addEventListener("DOMContentLoaded", function () {
       handleItemClick(targetGroup, itemName);
     });
   });
+
+  // set ATTRIBUTES
+
+  // Знаходимо всі елементи з класом 'baseprice'
+  const basePriceElements = document.querySelectorAll(".baseprice");
+  // Знаходимо всі елементи з класом 'code_item'
+  const codeItemElements = document.querySelectorAll(".code_item");
+  // Знаходимо всі елементи з класом 'product_title'
+  const productTitleElements = document.querySelectorAll(".product_title");
+
+  basePriceElements.forEach((element) => {
+    // Отримуємо текстовий контент елементу
+    const priceText = element.textContent;
+
+    // Створюємо текст для атрибуту 'aria-label'
+    const ariaLabel = `Precio:${priceText}`;
+
+    // Додаємо атрибут 'aria-label' до елементу
+    element.setAttribute("aria-label", ariaLabel);
+  });
+
+  codeItemElements.forEach((element) => {
+    // Отримуємо текстовий контент елементу
+    const codeText = element.textContent;
+
+    // Створюємо текст для атрибуту 'aria-label'
+    const ariaLabel = `Código del producto: ${codeText}`;
+
+    // Додаємо атрибут 'aria-label' до елементу
+    element.setAttribute("aria-label", ariaLabel);
+  });
+
+  productTitleElements.forEach((element) => {
+    // Отримуємо текстовий контент елементу
+    const productTitleText = element.textContent;
+
+    // Перевірка на наявність батьківського посилання
+    const parentLink = element.closest("a");
+
+    if (parentLink) {
+      // Додаємо атрибути до батьківського посилання, якщо воно є
+      parentLink.setAttribute("title", `Ir al producto «${productTitleText}»`);
+    } else {
+      // Додаємо атрибути до самого елементу, якщо немає батьківського посилання
+      element.setAttribute("role", "heading");
+      // Встановлюємо атрибут aria-level в залежності від тегу
+      element.setAttribute("aria-level", element.tagName === "H1" ? "1" : "2");
+    }
+  });
+
+  contentItems.forEach((contentItem) => {
+    // Знаходимо елемент з класом 'product_title' в межах поточного 'content_item'
+    const productTitle = contentItem.querySelector(".product_title");
+
+    // Знаходимо елемент(и) з класом 'item_info_link' в межах поточного 'content_item'
+    const itemInfoLinks = contentItem.querySelectorAll(".item_info_link");
+
+    // Виходимо з ітерації, якщо 'product_title' не знайдено
+    if (!productTitle) return;
+
+    // Отримуємо текстовий контент елементу 'product_title'
+    const productTitleText = productTitle.textContent;
+    // Знаходимо елемент(и) img в межах поточного 'content_item'
+    const imgTags = contentItem.querySelectorAll("img");
+
+    // Додаємо атрибути 'aria-label' до всіх знайдених 'item_info_link' в межах поточного 'content_item'
+    itemInfoLinks.forEach((link) => {
+      link.setAttribute(
+        "aria-label",
+        `Enlace al producto «${productTitleText}»`
+      );
+    });
+    // Додаємо атрибути 'alt' до всіх знайдених 'img' в межах поточного 'content_item'
+    imgTags.forEach((img) => {
+      img.setAttribute("alt", `Imagen de un ${productTitleText}`);
+    });
+  });
+
+  // ADD ATTR FOR ORDER ITEMS
+
+  orderItems.forEach((orderItem) => {
+    console.log(orderItem);
+    // Знаходимо елемент з класом 'product_title' в межах поточного 'order_item'
+    const productTitle = orderItem.querySelector(".product_title");
+
+    // Знаходимо елемент(и) з класом 'buy_btn' в межах поточного 'order_item'
+    const buyButtons = orderItem.querySelectorAll(".buy_btn");
+
+    // Виходимо з ітерації, якщо 'product_title' не знайдено
+    if (!productTitle) return;
+
+    // Отримуємо текстовий контент елементу 'product_title'
+    const productTitleText = productTitle.textContent;
+
+    // Додаємо атрибути 'aria-label' до всіх знайдених 'buy_btn' в межах поточного 'order_item'
+    buyButtons.forEach((btn) => {
+      btn.setAttribute(
+        "aria-label",
+        `Botón para ordenar este ${productTitleText}`
+      );
+    });
+  });
+
   // Завантаження збереженої категорії з Local Storage
   const postLoadAction = localStorage.getItem("postLoadAction");
   const parsedPostLoadAction = postLoadAction
@@ -515,7 +646,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   pvprInfos.forEach((pvprInfo) => {
     pvprInfo.addEventListener("click", showModal);
-    pvprInfo.addEventListener("touchend", showModal);
   });
 
   closeModalButton.addEventListener("click", hideModal);
