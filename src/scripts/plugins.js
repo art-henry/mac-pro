@@ -1,7 +1,7 @@
 // import Swiper JS
 import Swiper from "swiper/bundle";
 
-if (document.querySelector(".swiper")) {
+if (document.querySelector(".swiper") && window.location.pathname !== "/") {
   var swiper = new Swiper(".mySwiper", {
     loop: true,
     spaceBetween: 30,
