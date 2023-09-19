@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   .items_quantity {
-    color: #dfdfdf;
+    color: $gray;
     font-size: 3.2rem;
     margin-left: 1rem;
   }
@@ -54,7 +54,8 @@
   justify-content: center;
 
   .content_item {
-    background: linear-gradient(127.25deg, #f1f1f1 0%, #f6f6f6 73.74%);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1), 0 0px 0px rgba(0, 0, 0, 0.1);
+    // background: linear-gradient(127.25deg, #f1f1f1 0%, #f6f6f6 73.74%);
     padding: 1.5rem 1.5rem 4rem;
     display: none;
     grid-template-rows: auto auto;
@@ -92,7 +93,7 @@
       opacity: 1;
     }
     .content_code_item {
-      color: #7c8087;
+      color: $gray;
     }
     a {
       color: inherit;

@@ -22,8 +22,8 @@
       font-size: 2rem;
     }
     .banner_link_section {
-      .city {
-        font-size: 3.5rem;
+      .cities {
+        font-size: 3rem;
       }
     }
   }
@@ -56,9 +56,9 @@
     }
     .banner_link_section {
       margin-top: 1.5rem;
-      .city {
+      .cities {
         font-size: 2.5rem;
-        min-width: 170px;
+        // min-width: 170px;
       }
     }
   }
@@ -108,9 +108,9 @@
 
     .banner_link_section {
       margin-top: 1.5rem;
-      .city {
-        font-size: 2rem;
-        min-width: 120px;
+      .cities {
+        font-size: 2.2rem;
+        // min-width: 120px;
       }
     }
   }
@@ -179,22 +179,22 @@
     }
   }
 
-  .item_section {
-    .product_description_container {
-      .product_specs {
-        padding: 3rem 0;
-      }
-      .product_description_links {
-        display: none;
-      }
-      .product_description_links.mobile {
-        margin-left: -2rem;
-        margin-right: -2rem;
-        display: flex;
-      }
+  .product_description_container {
+    .product_specs {
+      padding: 3rem 0;
+    }
+    .product_description_links {
+      display: none;
+    }
+    .product_description_links.mobile {
+      margin-left: -2rem;
+      margin-right: -2rem;
+      display: flex;
     }
   }
-
+  .big_title {
+    font-size: 2.5rem;
+  }
   // Banner
   .banner_content {
     flex-direction: column-reverse;
@@ -233,9 +233,9 @@
       font-size: 1.8rem;
     }
     .banner_link_section {
-      .city {
+      .cities {
         font-size: 2.5rem;
-        min-width: 155px;
+        // min-width: 155px;
       }
     }
   }
@@ -274,17 +274,15 @@
   // PRODUCT CONTENT END
 
   // Product description links START
-  .item_section .product_description_container .product_description_links {
+  .product_description_container .product_description_links {
     overflow-x: auto;
     overflow-y: hidden;
     height: 7rem;
 
     // background-color: inherit;
   }
-  .item_section
-    .product_description_container
-    .product_descr
-    .product_descr_block {
+
+  .product_description_container .product_descr .product_descr_block {
     padding: 2rem 0;
     &.block7 {
       padding: 0 2rem;
@@ -328,9 +326,9 @@
       font-size: 1.6rem;
     }
     .banner_link_section {
-      .city {
+      .cities {
         font-size: 2.2rem;
-        min-width: 135px;
+        // min-width: 135px;
       }
     }
   }
@@ -356,19 +354,20 @@
       height: 2rem;
       background-size: 2rem;
     }
-    .product_description_container
-      .product_descr
-      .product_descr_block
-      .product_descr_block_section {
-      grid-template-columns: 1fr;
-      grid-gap: 2rem;
-    }
-    .product_description_container .review_section .video_review_section {
-      height: 250px;
-    }
+
     .product_content .product_selection .buy_buttons_section {
       grid-template-columns: 1fr;
     }
+  }
+  .product_description_container
+    .product_descr
+    .product_descr_block
+    .product_descr_block_section {
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+  }
+  .product_description_container .review_section .video_review_section {
+    height: 250px;
   }
   .content_wrapper {
     padding: 0;
@@ -407,9 +406,9 @@
       font-size: 1.3rem;
     }
     .banner_link_section {
-      .city {
-        font-size: 2rem;
-        min-width: auto;
+      .cities {
+        font-size: 1.5rem;
+        // min-width: auto;
       }
     }
     .btn {
@@ -445,13 +444,11 @@
   .title_main_blog {
     font-size: 2.8rem;
   }
-  .item_section .product_description_container .specs_list {
+  .product_description_container .specs_list {
     gap: 0.5rem;
   }
-  .item_section
-    .product_description_container
-    .review_section
-    .video_review_section {
+
+  .product_description_container .review_section .video_review_section {
     height: 170px;
   }
   .faq {

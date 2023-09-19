@@ -20,11 +20,12 @@
   max-width: 60%;
   object-fit: contain;
   max-height: 100%;
+  margin: 0 auto;
 }
 
 .banner_info_section {
   * {
-    font-family: microsoft_new_tai_lueregular !important;
+    font-family: Microsoft New Tai Lue, Roboto, sans-serif;
   }
   min-width: 610px;
   margin-right: 6rem;
@@ -58,13 +59,15 @@
   }
   .banner_link_section {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 4.5rem;
+    gap: 2rem;
     margin-top: 2rem;
-    .city {
-      font-size: 4rem;
-      min-width: 200px;
+    .cities {
+      font-size: 3.5rem;
       text-transform: uppercase;
+      display: flex;
+      gap: 2rem;
     }
   }
 }

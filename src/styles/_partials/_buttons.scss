@@ -63,6 +63,7 @@ button {
     }
   }
   &.btn_banner {
+    width: 90%;
     padding: 0.8rem 2rem 0.5rem;
     font-size: 2.5rem;
     font-weight: 500;
@@ -73,6 +74,7 @@ button {
 
 .mobile_nav_btn {
   position: fixed;
+
   right: 0;
   bottom: 300px;
   z-index: 999;
@@ -130,4 +132,7 @@ button {
       transform: rotate(90deg);
     }
   }
+}
+#id-21 .ant-back.left {
+  display: none;
 }

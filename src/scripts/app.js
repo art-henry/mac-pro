@@ -179,9 +179,9 @@ document.addEventListener("DOMContentLoaded", function () {
   chatLinks.forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
-      // resetAriaPressed();
-      // this.setAttribute("aria-pressed", "true");
-      // Зміна стилю елемента ant-back-top
+      const currentAriaPressed = this.getAttribute("aria-pressed") === "true";
+      this.setAttribute("aria-pressed", String(!currentAriaPressed));
+
       // Зміна атрибута xlink:href у svg елементі
       const svgUseElement = link.querySelector("use");
       if (svgUseElement) {
@@ -318,20 +318,11 @@ document.addEventListener("DOMContentLoaded", function () {
   breadCrumbList.addEventListener("click", function (e) {
     // e.preventDefault();
     if (e.target && e.target.id === "homeCrumb") {
-      console.log("click");
       clearLocalStorage();
     }
   });
   // Функція для додавання нового елемента хлібної крошки
-  if (
-    window.location.pathname === "/" ||
-    window.location.pathname === "/index.html"
-  ) {
-    const breadCrumbContainer = document.querySelector(".breadCrumbContainer");
-    if (breadCrumbContainer) {
-      breadCrumbContainer.style.display = "none";
-    }
-  }
+
   function addBreadCrumb(itemName, targetGroup) {
     if (!breadCrumbList.querySelector("#homeCrumb")) {
       const homeLi = document.createElement("li");
@@ -362,11 +353,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleItemClick(targetGroup, itemName) {
-    if (itemName) {
-      console.log("itemName exists:", itemName);
-    } else {
-      console.log("itemName is null or undefined");
-    }
+    // if (itemName) {
+    //   console.log("itemName exists:", itemName);
+    // } else {
+    //   console.log("itemName is null or undefined");
+    // }
     if (groupNameElement) {
       groupNameElement.textContent = itemName;
     }
@@ -411,13 +402,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const contentItemsExist = document.querySelector(".content_items");
 
   menuItems.forEach((item) => {
-    // Встановлюємо aria-label відразу
     const menuItemNameElement = item.querySelector(".item_name");
     const itemName = menuItemNameElement ? menuItemNameElement.textContent : "";
 
-    if (itemName) {
-      item.setAttribute("aria-label", itemName);
-    }
+    // if (itemName) {
+    //   item.setAttribute("aria-label", itemName);
+    // }
     if (!contentItemsExist) {
       const hrefValue = item.getAttribute("href");
       if (hrefValue && hrefValue.startsWith("#")) {
@@ -492,7 +482,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const productTitle = contentItem.querySelector(".product_title");
 
     // Знаходимо елемент(и) з класом 'item_info_link' в межах поточного 'content_item'
-    const itemInfoLinks = contentItem.querySelectorAll(".item_info_link");
+    // const itemInfoLinks = contentItem.querySelectorAll(".item_info_link");
 
     // Виходимо з ітерації, якщо 'product_title' не знайдено
     if (!productTitle) return;
@@ -503,12 +493,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const imgTags = contentItem.querySelectorAll("img");
 
     // Додаємо атрибути 'aria-label' до всіх знайдених 'item_info_link' в межах поточного 'content_item'
-    itemInfoLinks.forEach((link) => {
-      link.setAttribute(
-        "aria-label",
-        `Enlace al producto «${productTitleText}»`
-      );
-    });
+    // itemInfoLinks.forEach((link) => {
+    //   link.setAttribute(
+    //     "aria-label",
+    //     `Enlace al producto «${productTitleText}»`
+    //   );
+    // });
     // Додаємо атрибути 'alt' до всіх знайдених 'img' в межах поточного 'content_item'
     imgTags.forEach((img) => {
       img.setAttribute("alt", `Imagen de un ${productTitleText}`);
@@ -518,7 +508,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // ADD ATTR FOR ORDER ITEMS
 
   orderItems.forEach((orderItem) => {
-    console.log(orderItem);
     // Знаходимо елемент з класом 'product_title' в межах поточного 'order_item'
     const productTitle = orderItem.querySelector(".product_title");
 
@@ -607,9 +596,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Логіка для сторінки з товаром
   const itemTitleElement = document.querySelector(".item_title");
   if (itemTitleElement) {
-    console.log(itemTitleElement);
     const savedData = localStorage.getItem("breadCrumbHistory");
-    console.log(savedData);
     if (savedData) {
       const { targetGroup, itemName } = JSON.parse(savedData);
       addBreadCrumb(itemName, targetGroup);
