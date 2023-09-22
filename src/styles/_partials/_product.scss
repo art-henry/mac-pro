@@ -7,7 +7,7 @@
   }
   .product_info-small {
     .star_feedback {
-      display: none !important;
+      display: none;
     }
     color: $gray;
     & .code_item {
@@ -30,40 +30,30 @@
     // Product Selection
 
     .product_selection {
+      gap: 2.5rem;
       .guarantee {
-        position: relative;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
         width: 100%;
         margin-bottom: 3.5rem;
         padding: 0 18px;
         border-radius: 0.8rem;
         background-color: #eaf1ff;
-        color: #292424 !important;
+        color: #292424;
         overflow: hidden;
         font-weight: 500;
         font-size: 14px;
         line-height: 20px;
-        -webkit-order: -1;
-        -ms-flex-order: -1;
+
         order: -1;
-        -webkit-box-pack: justify;
-        -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
+
         justify-content: space-between;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
+
         align-items: center;
         height: 40px;
       }
       .color_selection {
-        gap: 1rem;
-        & > * {
-          margin: 0 8px 8px 0;
-        }
+        gap: 2.5rem;
+
         .color_choice {
           display: flex;
           border-radius: 16px;
@@ -261,7 +251,7 @@
       float: left;
       margin: 4px 10px 2px 0px;
       height: 40px;
-      width: fit-content;
+      width: auto;
     }
     .product_descr_small_img {
       width: 80px;
@@ -307,54 +297,71 @@
   // Video review START
 
   .review_section {
+    text-align: center;
     margin: 5rem auto;
     max-width: 80rem;
     .video_review_section {
-      height: 450px;
-      padding-top: 2rem;
+      position: relative;
+      padding-bottom: 54.35%;
+      margin-top: 2rem;
+      height: 0;
+    }
+    .play-icon {
+      position: absolute;
+      top: calc(50% - 30px);
+      left: calc(50% - 30px);
+      cursor: pointer;
+    }
+    svg {
+      width: 60px;
+      height: 60px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
     }
 
     iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
+      border-width: 0;
+      outline-width: 0;
     }
   }
 
   // Video review END
 }
 // Raiting START
-.star_feedback {
-  margin-top: 2rem;
-}
-.star_feedback .cloud {
-  background-color: $light_gray !important;
-}
-.rating-area .star {
-  width: 2.2rem;
-  height: 2.2rem;
-  background-size: 2rem;
-}
-.cloud .star-feedback-posted .author {
-  font-size: 1.2rem;
-}
-.cloud .star-feedback-posted .time {
-  font-size: 1rem;
-}
-.cloud .star-feedback-posted .text {
-  font-size: 1.6rem;
-}
-.cloud .admin-answer {
-  font-size: 1.6rem;
-}
-.cloud .admin-answer .author {
-  font-size: 1.2rem;
-}
-.cloud .admin-answer .time {
-  font-size: 1rem;
-}
-.star-feedback .close:hover {
-  background-color: $hover_light_blue;
-}
+
+// .rating-area .star {
+//   width: 2.2rem;
+//   height: 2.2rem;
+//   background-size: 2rem;
+// }
+// .cloud .star-feedback-posted .author {
+//   font-size: 1.2rem;
+// }
+// .cloud .star-feedback-posted .time {
+//   font-size: 1rem;
+// }
+// .cloud .star-feedback-posted .text {
+//   font-size: 1.6rem;
+// }
+// .cloud .admin-answer {
+//   font-size: 1.6rem;
+// }
+// .cloud .admin-answer .author {
+//   font-size: 1.2rem;
+// }
+// .cloud .admin-answer .time {
+//   font-size: 1rem;
+// }
+// .star-feedback .close:hover {
+//   background-color: $hover_light_blue;
+// }
 // Custom Style
 .star_raiting_container {
   margin: 0 auto;

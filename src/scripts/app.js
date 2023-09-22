@@ -1,48 +1,56 @@
 // Importing styles and plugins
 import "../styles/main.scss";
-import "./plugins";
-
-// Variables for NAV PRODUCT DESCRIPTION
-const productDescriptionElements = [].slice.call(
-  document.querySelectorAll(".product_descr_link")
-);
-
-// Variables for Buy FUNCTION
-var orderItems = document.querySelectorAll(".order_item");
-
-// Variables for Share Button
-let share_btn = document.querySelector(".share_btn");
-
-// Variables for Chat Function
-const chatLinks = document.querySelectorAll(".double-chat");
-const whatsappChatLinks = document.querySelectorAll(".whats-app-chat");
-const telegramChatLinks = document.querySelectorAll(".telegram-chat");
-
-// Variables for Scroll Element
-var backTopElement = document.querySelector(".ant-back.top");
-
-// Variables for back to prev page
-const transitionExists = localStorage.getItem("transitionExists");
-const backButton = document.querySelector(".ant-back.left");
-const prevPageURL = localStorage.getItem("prevPage");
-
-// Variables for Burger Menu
-let toggle_btns = document.querySelectorAll(
-  ".button_mobimenu_container, #overlay, aside li"
-);
-
-// Variables for Filter Items
-const menuItems = document.querySelectorAll("*.filter-link");
-const contentItems = document.querySelectorAll(".content_item");
-const groupNameElement = document.querySelector(".catalog_group_name");
-
-// Variables for Crumb and Logo
-const breadCrumbList = document.querySelector(".breadCrumbList");
-let homeCrumb = document.querySelector("#homeCrumb");
-const logo = document.querySelector(".logo");
-const itemInfoLinks = document.querySelectorAll(".item_info_link");
-
+import "./videoLoader";
+// import "./plugins";
 document.addEventListener("DOMContentLoaded", function () {
+  // if (document.querySelector(".product_carousel")) {
+  //   import("./plugins")
+  //     .then((module) => {})
+  //     .catch((error) => {
+  //       console.error("Error loading module:", error);
+  //     });
+  // }
+
+  // Variables for NAV PRODUCT DESCRIPTION
+  const productDescriptionElements = [].slice.call(
+    document.querySelectorAll(".product_descr_link")
+  );
+
+  // Variables for Buy FUNCTION
+  var orderItems = document.querySelectorAll(".order_item");
+
+  // Variables for Share Button
+  let share_btn = document.querySelector(".share_btn");
+
+  // Variables for Chat Function
+  const chatLinks = document.querySelectorAll(".double-chat");
+  const whatsappChatLinks = document.querySelectorAll(".whats-app-chat");
+  const telegramChatLinks = document.querySelectorAll(".telegram-chat");
+
+  // Variables for Scroll Element
+  var backTopElement = document.querySelector(".ant-back.top");
+
+  // Variables for back to prev page
+  const transitionExists = localStorage.getItem("transitionExists");
+  const backButton = document.querySelector(".ant-back.left");
+  const prevPageURL = localStorage.getItem("prevPage");
+
+  // Variables for Burger Menu
+  let toggle_btns = document.querySelectorAll(
+    ".button_mobimenu_container, #overlay, aside li"
+  );
+
+  // Variables for Filter Items
+  const menuItems = document.querySelectorAll("*.filter-link");
+  const contentItems = document.querySelectorAll(".content_item");
+  const groupNameElement = document.querySelector(".catalog_group_name");
+
+  // Variables for Crumb and Logo
+  const breadCrumbList = document.querySelector(".breadCrumbList");
+  let homeCrumb = document.querySelector("#homeCrumb");
+  const logo = document.querySelector(".logo");
+  const itemInfoLinks = document.querySelectorAll(".item_info_link");
+
   // NAV PRODUCT DESCRIPTION
 
   productDescriptionElements.forEach((element) => {
@@ -263,7 +271,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Викликаємо функцію для оновлення елемента з кількістю
       updateQuantityElement(visibleItemCount);
     } else {
-      console.error("Element with class 'content_items' was not found!");
+      // console.error("Element with class 'content_items' was not found!");
+      return;
     }
   }
   // Викликати функцію при необхідності, наприклад, при зміні кількості видимих елементів
@@ -275,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.documentElement.scrollTop ||
       document.body.scrollTop;
     if (backTopElement) {
-      if (scrollTop >= 300) {
+      if (scrollTop >= 500) {
         backTopElement.style.display = "grid";
       } else {
         backTopElement.style.display = "none";

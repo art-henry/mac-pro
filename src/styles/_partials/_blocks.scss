@@ -9,31 +9,28 @@
   background-color: rgba(41, 36, 36, 0.7);
   z-index: 2000;
 }
+
 .variant_selection {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   flex-flow: wrap;
-  -webkit-box-pack: start;
-  place-content: stretch flex-start;
-  -webkit-box-align: center;
+
   align-items: center;
 }
 
 .variant_block {
   --gap: 0.8rem;
   display: flex;
-  -webkit-box-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
   align-items: center;
   border: 1px solid rgb(223, 223, 223);
   box-sizing: border-box;
   border-radius: 3.2rem;
   font-weight: 500;
-  font-size: 1.3rem;
-  line-height: 2rem;
+  font-size: 1.6rem;
+
   color: rgb(63, 64, 77);
-  margin: var(--gap) var(--gap) var(--gap) 0;
+
   padding: 1rem 1.6rem;
   min-width: 6.5rem;
   cursor: pointer;
@@ -44,8 +41,8 @@
     transition: all 300ms linear 0s;
   }
   &.active {
-    border: 1px solid rgb(86, 141, 254);
-    color: rgb(86, 141, 254);
+    border: 1px solid $hover_blue;
+    color: $hover_blue;
   }
   &.unavailable {
     color: $gray;
@@ -102,7 +99,7 @@
     display: flex;
     align-items: center;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 12px;
     color: $gray;
 
     gap: 3rem;
@@ -149,7 +146,7 @@
       font-size: 1.2rem;
     }
     .recommend_price__titles {
-      font-size: 0.8rem;
+      font-size: 12px;
       gap: 2rem;
       svg {
         height: 20px;

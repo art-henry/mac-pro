@@ -10,9 +10,12 @@ module.exports = (env, options) => {
 
   return {
     mode: isProduction ? "production" : "development", // Доданий режим
-    entry: "./src/scripts/app.js",
+    entry: {
+      app: "./src/scripts/app.js",
+      plugin: "./src/scripts/plugins.js", // замініть на шлях до вашого файлу плагіну
+    },
     output: {
-      filename: "bundle.js",
+      filename: "[name].js",
       path: path.resolve(__dirname, "./dist"),
     },
     optimization: {

@@ -47,3 +47,9 @@
 .payment__list li {
   margin-bottom: 0.5rem;
 }
+
+@media (max-width: 768px) {
+  .delivery-payment {
+    width: 100%;
+  }
+}
