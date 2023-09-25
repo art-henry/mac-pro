@@ -26,14 +26,23 @@
     transform: scale(1.1) !important;
     transition: transform 500ms ease 0s !important;
   }
+  &.double-chat {
+    animation: pulse 1s infinite;
+  }
 }
 .telegram-chat,
-.whats-app-chat {
+.whats-app-chat,
+.mail-chat {
   display: none;
   &.visible {
     display: flex;
     svg {
       height: 30px;
     }
+  }
+}
+@media (max-width: 767.5px) {
+  .chat_section {
+    right: 10px;
   }
 }

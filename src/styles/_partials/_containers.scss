@@ -14,8 +14,16 @@
     padding: 0px 2rem;
   }
 }
+@media (max-width: 1440px) {
+  .grid_container {
+    gap: 40px;
+  }
+}
 @media (max-width: 991.5px) {
   .container {
     padding: 0 1rem;
+  }
+  .grid_container {
+    gap: 10px;
   }
 }

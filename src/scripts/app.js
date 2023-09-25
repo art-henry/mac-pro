@@ -1,6 +1,7 @@
 // Importing styles and plugins
 import "../styles/main.scss";
 import "./videoLoader";
+import "./chat";
 // import "./plugins";
 document.addEventListener("DOMContentLoaded", function () {
   // if (document.querySelector(".product_carousel")) {
@@ -21,11 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Variables for Share Button
   let share_btn = document.querySelector(".share_btn");
-
-  // Variables for Chat Function
-  const chatLinks = document.querySelectorAll(".double-chat");
-  const whatsappChatLinks = document.querySelectorAll(".whats-app-chat");
-  const telegramChatLinks = document.querySelectorAll(".telegram-chat");
 
   // Variables for Scroll Element
   var backTopElement = document.querySelector(".ant-back.top");
@@ -99,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Знаходимо елемент з класом code_item та product_title
     var codeElement = orderItem.querySelector(".code_item");
-    var productTitleElement = orderItem.querySelector(".product_title");
+    var productTitleElement = orderItem.querySelector(".item_title");
     var productPriceElement = orderItem.querySelector(".baseprice");
 
     if (!codeElement || !productTitleElement) {
@@ -169,85 +165,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     share_btn.addEventListener("click", shareContent);
   }
-  // Chat Function
-  const whatsappLink = "https://wa.me/420792435436?text=";
-  const telegramLink = "https://t.me/henrik_dev?text=";
-
-  // Функция для сброса aria-pressed для всех ссылок
-  // const resetAriaPressed = () => {
-  //   chatLinks.forEach((link) => link.setAttribute("aria-pressed", "false"));
-  //   whatsappChatLinks.forEach((link) =>
-  //     link.setAttribute("aria-pressed", "false")
-  //   );
-  //   telegramChatLinks.forEach((link) =>
-  //     link.setAttribute("aria-pressed", "false")
-  //   );
-  // };
-
-  chatLinks.forEach((link) => {
-    link.addEventListener("click", function (event) {
-      event.preventDefault();
-      const currentAriaPressed = this.getAttribute("aria-pressed") === "true";
-      this.setAttribute("aria-pressed", String(!currentAriaPressed));
-
-      // Зміна атрибута xlink:href у svg елементі
-      const svgUseElement = link.querySelector("use");
-      if (svgUseElement) {
-        const currentHref = svgUseElement.getAttribute("xlink:href");
-        if (currentHref === "#chat-double") {
-          // Додавання класу visible елементам whatsappChatLinks та telegramChatLinks
-          whatsappChatLinks.forEach((whatsappLink) => {
-            whatsappLink.classList.add("visible");
-          });
-          telegramChatLinks.forEach((telegramLink) => {
-            telegramLink.classList.add("visible");
-          });
-
-          svgUseElement.setAttribute("xlink:href", "#close");
-        } else {
-          // Відновлення попереднього стану при повторному кліку
-          whatsappChatLinks.forEach((whatsappLink) => {
-            whatsappLink.classList.remove("visible");
-          });
-          telegramChatLinks.forEach((telegramLink) => {
-            telegramLink.classList.remove("visible");
-          });
-
-          svgUseElement.setAttribute("xlink:href", "#chat-double");
-        }
-      }
-    });
-  });
-  // Обробка кліку на whatsappChatLinks
-  whatsappChatLinks.forEach((whatsappChat) => {
-    whatsappChat.addEventListener("click", function (event) {
-      event.preventDefault();
-      // resetAriaPressed();
-      // this.setAttribute("aria-pressed", "true");
-      let extraText = "";
-      const productNameElement = document.getElementById("product_name");
-      if (productNameElement) {
-        productPrice = document.querySelector(".baseprice").textContent;
-        extraText = `"${productNameElement.textContent}, price ${productPrice}"\nTu mensaje: `;
-      }
-      window.open(whatsappLink + encodeURIComponent(extraText), "_blank");
-    });
-  });
-
-  // Обробка кліку на telegramChatLinks
-  telegramChatLinks.forEach((telegramChat) => {
-    telegramChat.addEventListener("click", function (event) {
-      event.preventDefault();
-      // resetAriaPressed();
-      // this.setAttribute("aria-pressed", "true");
-      let extraText = "";
-      const productNameElement = document.getElementById("product_name");
-      if (productNameElement) {
-        extraText = `"${productNameElement.textContent}"\nTu mensaje: `;
-      }
-      window.open(telegramLink + encodeURIComponent(extraText), "_blank");
-    });
-  });
 
   // Функція для оновлення кількості видимих елементів
   function updateQuantityElement(itemCount) {
@@ -257,7 +174,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Встановлюємо потрібний текст
       quantityElement.textContent = `- ${itemCount}`;
     } else {
-      console.error("Element with class 'item_quantity' was not found!");
+      return;
+      // console.error("Element with class 'item_quantity' was not found!");
     }
   }
   function updateVisibleItemCount() {
@@ -361,39 +279,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function handleItemClick(targetGroup, itemName) {
-    // if (itemName) {
-    //   console.log("itemName exists:", itemName);
-    // } else {
-    //   console.log("itemName is null or undefined");
-    // }
-    if (groupNameElement) {
-      groupNameElement.textContent = itemName;
-    }
-    if (contentItems.length > 0) {
-      contentItems.forEach((contentItem) => {
-        contentItem.classList.remove("visible");
-      });
+  // function handleItemClick(targetGroup, itemName) {
+  //   // if (itemName) {
+  //   //   console.log("itemName exists:", itemName);
+  //   // } else {
+  //   //   console.log("itemName is null or undefined");
+  //   // }
+  //   if (groupNameElement) {
+  //     groupNameElement.textContent = itemName;
+  //   }
+  //   if (contentItems.length > 0) {
+  //     contentItems.forEach((contentItem) => {
+  //       contentItem.classList.remove("visible");
+  //     });
 
-      document.querySelectorAll(`.${targetGroup}`).forEach((groupItem) => {
-        groupItem.classList.add("visible");
-      });
+  //     document.querySelectorAll(`.${targetGroup}`).forEach((groupItem) => {
+  //       groupItem.classList.add("visible");
+  //     });
 
-      // Тут можна розмістити updateVisibleItemCount(), якщо він існує.
-      updateVisibleItemCount();
-    } else {
-      console.log(
-        "We're probably on the product page, skipping content items update."
-      );
-    }
+  //     // Тут можна розмістити updateVisibleItemCount(), якщо він існує.
+  //     updateVisibleItemCount();
+  //   } else {
+  //     console.log(
+  //       "We're probably on the product page, skipping content items update."
+  //     );
+  //   }
 
-    localStorage.setItem(
-      "selectedCategory",
-      JSON.stringify({ targetGroup, itemName })
-    );
-    clearBreadCrumbs();
-    addBreadCrumb(itemName, targetGroup);
-  }
+  //   localStorage.setItem(
+  //     "selectedCategory",
+  //     JSON.stringify({ targetGroup, itemName })
+  //   );
+  //   clearBreadCrumbs();
+  //   addBreadCrumb(itemName, targetGroup);
+  // }
 
   // document.addEventListener("click", function (e) {
   //   if (e.target && e.target.classList.contains("filter-link")) {
@@ -408,34 +326,34 @@ document.addEventListener("DOMContentLoaded", function () {
   //   }
   // });
 
-  const contentItemsExist = document.querySelector(".content_items");
+  // const contentItemsExist = document.querySelector(".content_items");
 
-  menuItems.forEach((item) => {
-    const menuItemNameElement = item.querySelector(".item_name");
-    const itemName = menuItemNameElement ? menuItemNameElement.textContent : "";
+  // menuItems.forEach((item) => {
+  //   const menuItemNameElement = item.querySelector(".item_name");
+  //   const itemName = menuItemNameElement ? menuItemNameElement.textContent : "";
 
-    // if (itemName) {
-    //   item.setAttribute("aria-label", itemName);
-    // }
-    if (!contentItemsExist) {
-      const hrefValue = item.getAttribute("href");
-      if (hrefValue && hrefValue.startsWith("#")) {
-        item.setAttribute("href", `/#${hrefValue.substring(1)}`);
-      }
-    }
-    // Подія кліку
-    item.addEventListener("click", function (e) {
-      // e.preventDefault();
-      const targetGroup = item.getAttribute("data-target");
-      // Зберегти дані для дій після завантаження
-      localStorage.setItem(
-        "postLoadAction",
-        JSON.stringify({ targetGroup, itemName })
-      );
-      // window.location.href = "/";
-      handleItemClick(targetGroup, itemName);
-    });
-  });
+  //   // if (itemName) {
+  //   //   item.setAttribute("aria-label", itemName);
+  //   // }
+  //   if (!contentItemsExist) {
+  //     const hrefValue = item.getAttribute("href");
+  //     if (hrefValue && hrefValue.startsWith("#")) {
+  //       item.setAttribute("href", `/#${hrefValue.substring(1)}`);
+  //     }
+  //   }
+  //   // Подія кліку
+  //   item.addEventListener("click", function (e) {
+  //     // e.preventDefault();
+  //     const targetGroup = item.getAttribute("data-target");
+  //     // Зберегти дані для дій після завантаження
+  //     localStorage.setItem(
+  //       "postLoadAction",
+  //       JSON.stringify({ targetGroup, itemName })
+  //     );
+  //     // window.location.href = "/";
+  //     handleItemClick(targetGroup, itemName);
+  //   });
+  // });
 
   // set ATTRIBUTES
 
@@ -544,14 +462,14 @@ document.addEventListener("DOMContentLoaded", function () {
     ? JSON.parse(postLoadAction)
     : null;
   if (parsedPostLoadAction) {
-    const { targetGroup, itemName } = parsedPostLoadAction;
-    handleItemClick(targetGroup, itemName);
+    // const { targetGroup, itemName } = parsedPostLoadAction;
+    // handleItemClick(targetGroup, itemName);
     localStorage.removeItem("postLoadAction"); // Очищення команди
   } else {
     const savedData = localStorage.getItem("selectedCategory");
     if (savedData) {
-      const { targetGroup, itemName } = JSON.parse(savedData);
-      handleItemClick(targetGroup, itemName);
+      // const { targetGroup, itemName } = JSON.parse(savedData);
+      // handleItemClick(targetGroup, itemName);
     }
   }
 
@@ -674,9 +592,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   priceSections.forEach((priceSection) => {
     const basePriceElem = priceSection.querySelector(".baseprice");
-    const recommendPriceElem = priceSection.querySelector(
-      ".recommend_price__value"
-    );
+    const recommendPriceElem = priceSection.querySelector(".recommend_value ");
     const discountValueElem = priceSection.querySelector(".discount_value");
 
     if (basePriceElem && recommendPriceElem && discountValueElem) {

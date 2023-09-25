@@ -14,7 +14,7 @@
   display: flex;
   gap: 2.5rem;
   flex-flow: wrap;
-
+  padding-left: 18px;
   align-items: center;
 }
 
@@ -28,37 +28,35 @@
   border-radius: 3.2rem;
   font-weight: 500;
   font-size: 1.6rem;
-
+  min-width: 75px;
   color: rgb(63, 64, 77);
-
   padding: 1rem 1.6rem;
-  min-width: 6.5rem;
-  cursor: pointer;
+  cursor: text;
   background: rgb(255, 255, 255);
   position: relative;
-  &:hover {
-    border-color: $hover_blue;
-    transition: all 300ms linear 0s;
-  }
-  &.active {
-    border: 1px solid $hover_blue;
-    color: $hover_blue;
-  }
-  &.unavailable {
-    color: $gray;
-    &::after {
-      content: "";
-      border-radius: 0.8rem;
+  // &:hover {
+  //   border-color: $hover_blue;
+  //   transition: all 300ms linear 0s;
+  // }
+  // &.active {
+  //   border: 1px solid $hover_blue;
+  //   color: $hover_blue;
+  // }
+  // &.unavailable {
+  //   color: $gray;
+  //   &::after {
+  //     content: "";
+  //     border-radius: 0.8rem;
 
-      background-color: rgb(218, 218, 218);
-      width: 0.1rem;
-      height: 140%;
-      position: absolute;
-      top: -20%;
-      left: 50%;
-      transform: rotate(45deg);
-    }
-  }
+  //     background-color: rgb(218, 218, 218);
+  //     width: 0.1rem;
+  //     height: 140%;
+  //     position: absolute;
+  //     top: -20%;
+  //     left: 50%;
+  //     transform: rotate(45deg);
+  //   }
+  // }
 }
 
 .text_section {
@@ -89,77 +87,73 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
-  .recommend_price {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.9rem;
-  }
-  .recommend_price__titles {
-    position: relative;
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    font-size: 12px;
-    color: $gray;
+}
 
-    gap: 3rem;
-    svg {
-      fill: $gray;
-      cursor: pointer;
-    }
-  }
-  .recommend_price__title {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
+.recommend_price {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.9rem;
+}
 
-  .recommend_price__values {
-    color: $gray;
-    display: flex;
-    gap: 3rem;
-  }
+.recommend_title_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: $gray;
 
-  .discount_value {
-    font-size: 1.4rem;
-    background-color: #bf0019;
-    border-radius: 4px;
-    color: #fff;
-    font-weight: 700;
-    padding: 2px;
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-  }
-  .recommend_price__value {
-    text-decoration: line-through;
+  .pvpr_info {
+    fill: $gray;
+    cursor: pointer;
+    margin: 0 2rem 0 1rem;
   }
 }
 
+.recommend_values {
+  color: $gray;
+  display: flex;
+  gap: 2rem;
+  justify-content: end;
+}
+
+.discount_value {
+  font-size: 1.4rem;
+  background-color: #bf0019;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 700;
+  padding: 2px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.recommend_value {
+  text-decoration: line-through;
+}
+
 .content_item {
-  .price_section {
-    gap: 3rem;
-    justify-content: center;
-    .recommend_price {
-      font-size: 1.2rem;
-    }
-    .recommend_price__titles {
-      font-size: 12px;
-      gap: 2rem;
-      svg {
-        height: 20px;
-        width: 20px;
-      }
-    }
-    .recommend_price__values {
-      gap: 3.5rem;
-    }
-    .discount_value {
-      font-size: 1rem;
-    }
-  }
+  // .price_section {
+  //   justify-content: center;
+  //   .recommend_price {
+  //     font-size: 1.2rem;
+  //   }
+  //   .recommend_price__titles {
+  //     font-size: 12px;
+  //     gap: 2rem;
+  //     svg {
+  //       height: 20px;
+  //       width: 20px;
+  //     }
+  //   }
+  //   .recommend_price__values {
+  //     gap: 3.5rem;
+  //   }
+  //   .discount_value {
+  //     font-size: 1rem;
+  //   }
+  // }
 }
 
 // breadCrumbContainer
@@ -188,6 +182,16 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+  }
+}
+@media (max-width: 479.5px) {
+  .item_section .content_wrapper .product_content .product_selection {
+    align-items: end;
+  }
+  .variant_selection {
+    span {
+      width: 100%;
     }
   }
 }

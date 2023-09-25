@@ -135,3 +135,10 @@ button {
 #id-21 .ant-back.left {
   display: none;
 }
+
+@media (max-width: 767.5px) {
+  .ant-back.top,
+  .ant-back.left {
+    right: 10px;
+  }
+}
