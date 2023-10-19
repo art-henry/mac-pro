@@ -6,7 +6,7 @@ button {
   margin: 0;
   padding: 0;
   overflow: visible;
-  text-align: inherit;
+  text-align: center;
   display: inline-block;
   cursor: pointer;
   -webkit-appearance: none;
@@ -93,6 +93,32 @@ button {
   background-color: black;
   margin: 6px auto;
   display: block;
+  box-shadow: 0 0px 5px rgba(255, 255, 255, 0.5);
+}
+
+// SHOW MORE Button
+.show_more,
+.show_less {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+@media (max-width: 767.5px) {
+  .mobile_nav_btn {
+    top: 2px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+@media (max-width: 479.5px) {
+  .mobile_nav_btn {
+    top: 4px;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
 }
 
 .share_button {
@@ -136,7 +162,7 @@ button {
   display: none;
 }
 
-@media (max-width: 767.5px) {
+@media (max-width: 639.5px) {
   .ant-back.top,
   .ant-back.left {
     right: 10px;

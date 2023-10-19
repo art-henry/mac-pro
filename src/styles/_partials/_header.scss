@@ -8,8 +8,8 @@ header {
   flex: 0 0 100%;
   align-items: center;
   top: -1px;
-  z-index: 1000;
-
+  z-index: 999;
+  box-shadow: 0px 6px 6px -7px rgba(0, 0, 0, 0.2);
   display: flex;
 
   svg {
@@ -35,43 +35,61 @@ header {
   .header_nav {
     flex: 5;
   }
+
   & .nav_menu {
     display: flex;
     color: $dark_bg;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 0px;
     margin: 0px;
     height: 9rem;
     list-style: none;
     appearance: none;
-    position: relative;
-    li {
-      flex: 1;
-    }
-    &__item {
+
+    .menu-item {
       font-size: 2rem;
       display: flex;
       height: 100%;
       justify-content: center;
       align-items: center;
-      &:hover ~ .hover_block {
-        opacity: 1;
-        visibility: visible;
+
+      & > a {
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        height: 100%;
       }
-      &:focus ~ .hover_block {
-        opacity: 1;
-        visibility: visible;
-      }
+      // &:hover ~ .hover_block {
+      //   opacity: 1;
+      //   visibility: visible;
+      // }
+      // &:focus ~ .hover_block {
+      //   opacity: 1;
+      //   visibility: visible;
+      // }
+
+      // &:hover .sub-menu {
+      //   opacity: 1;
+      //   visibility: visible;
+      // }
+      // &:focus .sub-menu {
+      //   opacity: 1;
+      //   visibility: visible;
+      // }
     }
-    & .hover_block {
+    & .sub-menu {
+      display: grid;
+      align-items: start;
+      grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
       opacity: 0;
-      overflow: hidden;
-      border-radius: 18px;
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 8px 18px 0px;
       visibility: hidden;
+      overflow: auto;
+      color: $main_text_color;
+      box-shadow: 0px 6px 6px -7px rgba(0, 0, 0, 0.2);
+
       position: absolute;
-      top: 9.1rem;
+      top: 9rem;
       left: 0;
       width: 100%;
       max-height: 80vh;
@@ -79,130 +97,172 @@ header {
       z-index: 5;
       opacity: 0; // Початково блок невидимий
       transition: opacity 0.3s; // Додамо плавний перехід для видимості
+      padding: 2.86rem 2.29rem;
+      max-height: 80vh;
+      background-color: #fff;
 
-      &:hover,
-      &:focus-within {
-        opacity: 1; // Коли курсор миші наведено на блок або фокус в межах блоку
+      // &:hover,
+      // &:focus-within {
+      //   opacity: 1;
+      //   visibility: visible;
+      // }
+      .sub-menu-item {
+        font-size: 16px;
+        & > a {
+          display: block;
+          font-weight: 500;
+        }
+        padding: 1rem 1rem 0;
+        .sub-menu {
+          position: inherit;
+          box-shadow: none;
+          padding: 1rem 0;
+        }
+        .sub-menu-subitem {
+          padding: 5px 0;
+        }
+      }
+    }
+    .menu-item.open {
+      & > a {
+        color: $hover_blue;
+      }
+      .sub-menu {
+        opacity: 1;
         visibility: visible;
       }
     }
-    & .sub_menu {
-      color: $main_text_color;
-      border-radius: 18px;
 
-      margin-top: 1.9rem;
-      padding: 2.86rem 2.29rem;
-      max-width: 100%;
-      max-height: 100%;
-
-      z-index: 5;
-      background-color: #fff;
-
-      display: grid;
-      align-items: start;
-      grid-template-columns: repeat(
-        auto-fill,
-        minmax(15rem, 1fr)
-      ); // Це створює колонки, які мають принаймні 15rem завширшки, але розширяться, щоб заповнити доступний простір, якщо можливо.
-      gap: 3rem; // Відстань між рядами та колонками.
-      overflow-y: auto;
-      & ul {
-        padding-left: 0;
-        display: block;
-        & li {
-          padding-left: 2rem;
-          &:first-child {
-            background-color: #e6e6e6; /* Сірий колір фону */
-            font-weight: 500; /* Жирний шрифт */
-            padding: 5px 10px; /* Внутрішній відступ */
-            border-top-left-radius: 4px; /* Заокруглення кутів */
-            border-top-right-radius: 4px;
-            font-size: 1.22rem;
-          }
-          & + li {
-            margin-top: 0.58rem;
-          }
-          & a {
-            display: inline-block;
-            width: 100%;
-          }
-        }
+    .toggle_menu {
+      align-items: center;
+      height: 100%;
+      .icon {
+        height: 30px;
+        width: 30px;
+        transform: rotate(-90deg);
       }
     }
   }
   .icons_container {
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    height: 100%;
     display: flex;
+    align-items: center;
     gap: 2rem;
     margin-left: auto;
-    .toggle_icons {
+    &.open {
+      padding: 0 0 0 3rem;
+    }
+    .soc_link {
       display: none;
-      width: 30px;
-      height: 30px;
-      background-color: $dark_bg;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+    }
+    &.open .soc_link {
+      display: flex;
+      // justify-content: center;
+      // align-items: center;
+      opacity: 1;
+      visibility: visible;
+    }
+    .toggle_icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icon {
+        fill: #d53200;
+        width: 24px;
+        height: 24px;
+      }
       border-radius: 4px;
       border: none;
       cursor: pointer;
       transition: transform 0.3s ease-out;
       transform: rotate(90deg);
-      .icon {
-        fill: #fff;
-        width: 24px;
-        height: 24px;
-        &:hover {
-          fill: #fff;
-        }
-      }
     }
 
     .icon {
       transition: transform 0.3s ease-out;
-      height: 30px;
-      width: 30px;
+      height: 24px;
+      width: 24px;
       fill: $dark_bg; // Колір іконки. Змініть на ваш колір.
       &:hover {
         fill: $hover_blue;
         transform: scale(1.1);
       }
-    }
-
-    a:hover .icon {
-      // Тут можна додати стилі для зміни вигляду іконок при наведенні
+      &.youtube {
+        height: 30px;
+        width: 30px;
+      }
+      &.google {
+        width: 34px;
+        height: 34px;
+      }
     }
   }
+  @media (max-width: 991.5px) {
+    .icons_container {
+      position: inherit;
+    }
+  }
+
   @media (max-width: 767.5px) {
     .icons_container {
       .soc_link {
-        display: none;
+        // display: flex;
+        // opacity: 0;
+        // visibility: hidden;
+        // transition: opacity 0.3s, visibility 0.3s;
       }
 
-      .toggle_icons {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      &.open .soc_link {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transform: translateX(-100%);
-      }
+      // &.open .soc_link {
+      //   // display: flex;
+      //   // justify-content: center;
+      //   // align-items: center;
+      //   opacity: 1;
+      //   visibility: visible;
+      // }
     }
   }
   @media (max-width: 479.5px) {
     .icons_container {
       &.open {
         position: absolute;
-        justify-content: end;
-        background-color: $dark_bg;
+        justify-content: center;
+        background-color: #fff;
         width: 100%;
-        padding: 2rem;
+        padding: 2rem 0;
+      }
+      &.open .toggle_icons .icon {
+        // fill: #fff;
       }
 
-      .icon {
-        width: 25px;
-        height: 25px;
-        fill: #fff;
+      .soc_link {
+        .icon {
+          // width: 25px;
+          // height: 25px;
+          // fill: #fff;
+        }
       }
+      .soc_link.insta {
+        .icon {
+          // fill: #fff;
+          // background-color: #fff;
+          // padding: 1px;
+          // border-radius: 4px;
+          // width: 23px;
+          // height: 23px;
+        }
+      }
+    }
+  }
+  @media (max-width: 1199.5px) {
+    .nav_menu .menu-item {
+      font-size: 1.5rem;
     }
   }
 }

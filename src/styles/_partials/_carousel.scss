@@ -1,6 +1,6 @@
 .carousel {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 120px 1fr;
   gap: 50px;
   align-items: center;
 }
@@ -16,16 +16,18 @@
   max-width: 100%;
   height: auto;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .carousel-thumbnails {
   cursor: grab;
-  padding-right: 2rem;
+  padding-right: 1rem;
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   gap: 10px;
-  overflow-y: scroll;
-  justify-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  // justify-content: center;
   max-height: calc(4 * (100px + 1rem) - 1rem);
   transition: overflow-y 0.3s;
 }
@@ -53,6 +55,7 @@
 
 .carousel-thumbnail {
   max-width: 100%;
+  height: auto;
   object-fit: cover;
   opacity: 0.5;
 }
@@ -60,27 +63,21 @@
   opacity: 1;
 }
 
-@media (max-width: 1199.5px) {
-  .carousel {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    gap: 0;
-  }
-  .carousel-main {
-    order: 1;
-  }
-
+.carousel.horizontal {
+  grid-template-columns: 1fr;
+  gap: 0;
+  justify-items: center;
   .carousel-thumbnails {
-    gap: 20px;
-    margin: 0 auto;
-    grid-template-rows: none; /* Видаляємо вертикальний лаяут */
+    padding-right: 0;
+    grid-template-rows: none;
     overflow-y: hidden;
-    grid-auto-flow: column;
-    grid-auto-columns: 100px;
     overflow-x: auto;
+    grid-auto-flow: column;
+    grid-auto-columns: 30.3%;
     justify-items: center;
     align-items: center;
-    max-width: calc(4 * (100px + 20px) - 20px);
+    // max-width: calc(4 * (100px + 20px) - 20px);
+    max-width: 80%;
     order: 2;
     max-height: none;
   }
@@ -89,36 +86,157 @@
   }
 }
 
-@media (max-width: 991.5px) {
-  .carousel-main-img {
-    width: 70%;
+// FULL SCREEN IMAGE CAROUSEL start
+
+/* Сховайте всі зображення за винятком активного */
+.full-screen-carousel-wrapper {
+  display: none;
+  position: fixed;
+  // opacity: 0;
+  // visibility: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 4000;
+}
+
+.full-screen-carousel {
+  // position: relative;
+  object-fit: contain;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-screen-carousel-item {
+  display: none;
+  max-width: 100%;
+  height: auto;
+  max-height: 100vh;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.full-screen-carousel-item.active {
+  display: block;
+}
+
+.full-screen-carousel-button {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  svg {
+    width: 5rem;
+    height: 5rem;
   }
-  .carousel-thumbnails {
-    gap: 80px;
-    max-width: calc(4 * (100px + 80px) - 80px);
+
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.left {
+  left: 10px;
+}
+.right {
+  right: 10px;
+}
+.dots-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 30px;
+}
+
+.dot-button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.dot-button.active {
+  background-color: #275929; /* Зелений */
+  width: 18px;
+  height: 18px;
+}
+.full-screen-carousel-close {
+  position: fixed;
+  width: 35px;
+  height: 35px;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.full-screen-carousel-wrapper.open {
+  display: flex;
+  position: fixed;
+}
+
+@media (max-width: 1199.5px) {
+  .full-screen-carousel-button {
+    svg {
+      width: 3rem;
+      height: 3rem;
+    }
   }
 }
 @media (max-width: 767.5px) {
-  .carousel-thumbnails {
-    grid-auto-columns: 80px;
-    gap: 35px;
-    max-width: calc(4 * (80px + 35px) - 35px);
+  .carousel {
+    grid-template-columns: 1fr;
+    gap: 0;
+    justify-items: center;
+    .carousel-thumbnails {
+      padding-right: 0;
+      grid-template-rows: none;
+      overflow-y: hidden;
+      overflow-x: auto;
+      grid-auto-flow: column;
+      grid-auto-columns: 30.3%;
+      justify-items: center;
+      align-items: center;
+      // max-width: calc(4 * (100px + 20px) - 20px);
+      max-width: 80%;
+      order: 2;
+      max-height: none;
+    }
+    .carousel-thumbnails:hover {
+      overflow-y: hidden;
+    }
   }
-
-  .carousel-thumbnail {
-    width: 60px;
-    height: auto;
+  .full-screen-carousel-item {
+    max-width: 100%;
+  }
+  .full-screen-carousel-button {
+    display: none;
+  }
+  .left {
+    left: 30%;
+  }
+  .right {
+    right: 30%;
   }
 }
-@media (max-width: 479.5px) {
-  .carousel-thumbnails {
-    grid-auto-columns: 60px;
-    gap: 15px;
-    max-width: calc(4 * (60px + 15px) - 15px);
-  }
-
-  .carousel-thumbnail {
-    width: 60px;
-    height: auto;
+@media (min-width: 768px) {
+  .dots-container {
+    display: none;
   }
 }
+
+// FULL SCREEN IMAGE CAROUSEL end

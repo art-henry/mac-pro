@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 module.exports = (env, options) => {
   const isProduction = options.mode === "development";
@@ -12,7 +12,10 @@ module.exports = (env, options) => {
     mode: isProduction ? "production" : "development", // Доданий режим
     entry: {
       app: "./src/scripts/app.js",
-      plugin: "./src/scripts/plugins.js", // замініть на шлях до вашого файлу плагіну
+      chat: "./src/scripts/chat.js",
+      plugin: "./src/scripts/plugins.js",
+      productScript: "./src/scripts/product-scripts.js",
+      modal: "./src/scripts/modal.js",
     },
     output: {
       filename: "[name].js",
@@ -39,8 +42,8 @@ module.exports = (env, options) => {
       }),
       new CopyWebpackPlugin({
         patterns: [
-          { from: "src/images", to: "images" },
-          { from: "src/fonts", to: "fonts" },
+          {from: "src/images", to: "images"},
+          {from: "src/fonts", to: "fonts"},
           // { from: "src/icons", to: "icons" },
         ],
       }),

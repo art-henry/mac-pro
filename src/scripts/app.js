@@ -1,17 +1,11 @@
 // Importing styles and plugins
 import "../styles/main.scss";
+// import "./product-scripts";
 import "./videoLoader";
-import "./chat";
+// import "./chat";
+import "./toggle_btns";
 // import "./plugins";
 document.addEventListener("DOMContentLoaded", function () {
-  // if (document.querySelector(".product_carousel")) {
-  //   import("./plugins")
-  //     .then((module) => {})
-  //     .catch((error) => {
-  //       console.error("Error loading module:", error);
-  //     });
-  // }
-
   // Variables for NAV PRODUCT DESCRIPTION
   const productDescriptionElements = [].slice.call(
     document.querySelectorAll(".product_descr_link")
@@ -21,25 +15,20 @@ document.addEventListener("DOMContentLoaded", function () {
   var orderItems = document.querySelectorAll(".order_item");
 
   // Variables for Share Button
-  let share_btn = document.querySelector(".share_btn");
+  let share_btns = document.querySelectorAll(".share_btn");
 
   // Variables for Scroll Element
   var backTopElement = document.querySelector(".ant-back.top");
 
-  // Variables for back to prev page
-  const transitionExists = localStorage.getItem("transitionExists");
-  const backButton = document.querySelector(".ant-back.left");
-  const prevPageURL = localStorage.getItem("prevPage");
-
   // Variables for Burger Menu
   let toggle_btns = document.querySelectorAll(
-    ".button_mobimenu_container, #overlay, aside li"
+    ".button_mobimenu_container, #overlay"
   );
 
   // Variables for Filter Items
-  const menuItems = document.querySelectorAll("*.filter-link");
+  // const menuItems = document.querySelectorAll("*.filter-link");
   const contentItems = document.querySelectorAll(".content_item");
-  const groupNameElement = document.querySelector(".catalog_group_name");
+  // const groupNameElement = document.querySelector(".catalog_group_name");
 
   // Variables for Crumb and Logo
   const breadCrumbList = document.querySelector(".breadCrumbList");
@@ -58,23 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Back to prev PAGE
-
-  if (transitionExists) {
-    // Якщо є запис про перехід, робимо кнопку видимою
-    backButton.style.display = "grid";
-
-    // Додаємо подію кліку, яка повертає на попередню сторінку
-    backButton.addEventListener("click", () => {
-      window.location.href = prevPageURL;
-      if ((window.location.href = "/")) {
-        localStorage.removeItem("transitionExists");
-      }
-    });
-  } else {
-    // Якщо немає запису, робимо кнопку невидимою
-    backButton.style.display = "none";
-  }
   // Функція, яку викликаємо при переході на нову сторінку
   function transitionToNewPage() {
     // Зберігаємо запис в sessionStorage
@@ -106,17 +78,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Отримуємо текст з елементів та формуємо повідомлення
-    var codeText = codeElement.textContent;
-    var productTitle = productTitleElement.textContent;
-    var productPrice = productPriceElement.textContent;
+    var codeText = codeElement.textContent.trim().replace(/\s+/g, " ");
+    var productTitle = productTitleElement.textContent
+      .trim()
+      .replace(/\s+/g, " ");
+    var productPrice = productPriceElement.textContent
+      .trim()
+      .replace(/\s+/g, " ");
 
-    var textToSend = `Me gusta este articulo: ${codeText}; name: ${productTitle} price: ${productPrice}`;
+    var textToSend = `${productTitle}; code: ${codeText}; price: ${productPrice}`;
 
     // Закодований текст для використання в URL
     var encodedText = encodeURIComponent(textToSend);
 
     // Вказаний номер телефону
-    var phoneNumber = "+420792435436";
+    var phoneNumber = "+34634994042";
 
     // Генеруємо посилання для WhatsApp з переданим текстом та номером телефону
     var whatsappLink =
@@ -131,13 +107,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Додаємо обробник події натискання на кожен елемент .order_item
   orderItems.forEach(function (item) {
-    var buyItemElement = item.querySelector(".buy_btn");
-    if (buyItemElement) {
-      buyItemElement.addEventListener("click", openWhatsAppWithCode);
+    var buyItemElements = item.querySelectorAll(".buy_btn");
+    if (buyItemElements.length > 0) {
+      buyItemElements.forEach(function (buyItemElement) {
+        buyItemElement.addEventListener("click", openWhatsAppWithCode);
+      });
     }
   });
 
-  if (share_btn) {
+  // Share Button
+
+  if (share_btns.length > 0) {
+    // Define the shareContent function
     function shareContent() {
       const pageURL = window.location.href;
       const pageTitle = document.title;
@@ -149,21 +130,25 @@ document.addEventListener("DOMContentLoaded", function () {
             url: pageURL,
           })
           .catch((error) => {
-            console.error("Помилка при спробі поділитися:", error);
+            console.error("Error trying to share:", error);
           });
       } else {
-        // Якщо API поділу недоступний, копіюємо посилання до буфера обміну
+        // If the Share API is not available, copy the link to the clipboard
         navigator.clipboard
           .writeText(pageURL)
           .then(() => {
-            alert("Enlace copiado"); // Повідомлення "Посилання скопіроване"
+            alert("Link copied");
           })
           .catch((err) => {
             console.error("Could not copy text: ", err);
           });
       }
     }
-    share_btn.addEventListener("click", shareContent);
+
+    // Loop through each button and attach the event listener
+    share_btns.forEach((btn) => {
+      btn.addEventListener("click", shareContent);
+    });
   }
 
   // Функція для оновлення кількості видимих елементів
@@ -448,12 +433,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const productTitleText = productTitle.textContent;
 
     // Додаємо атрибути 'aria-label' до всіх знайдених 'buy_btn' в межах поточного 'order_item'
-    buyButtons.forEach((btn) => {
-      btn.setAttribute(
-        "aria-label",
-        `Botón para ordenar este ${productTitleText}`
-      );
-    });
+    // buyButtons.forEach((btn) => {
+    //   btn.setAttribute(
+    //     "aria-label",
+    //     `Botón para ordenar este ${productTitleText}`
+    //   );
+    // });
   });
 
   // Завантаження збереженої категорії з Local Storage
@@ -525,7 +510,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (itemTitleElement) {
     const savedData = localStorage.getItem("breadCrumbHistory");
     if (savedData) {
-      const { targetGroup, itemName } = JSON.parse(savedData);
+      const {targetGroup, itemName} = JSON.parse(savedData);
       addBreadCrumb(itemName, targetGroup);
       const itemTitle = itemTitleElement.textContent;
       const li = document.createElement("li");
@@ -543,27 +528,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Modal
 
-  const modal = document.querySelector(".modal-content");
-  const pvprInfos = document.querySelectorAll(".pvpr_info");
-  const closeModalButton = modal.querySelector(".close_modal");
-  const overlay = document.getElementById("modal-overlay");
+  // const modal = document.querySelector(".modal-content");
+  // const pvprInfos = document.querySelectorAll(".pvpr_info");
+  // const closeModalButton = modal.querySelector(".close_modal");
+  // const overlay = document.getElementById("modal-overlay");
 
-  function showModal() {
-    modal.style.display = "block";
-    overlay.style.display = "block";
-  }
+  // function showModal() {
+  //   modal.style.display = "block";
+  //   overlay.style.display = "block";
+  // }
 
-  function hideModal() {
-    modal.style.display = "none";
-    overlay.style.display = "none";
-  }
+  // function hideModal() {
+  //   modal.style.display = "none";
+  //   overlay.style.display = "none";
+  // }
 
-  pvprInfos.forEach((pvprInfo) => {
-    pvprInfo.addEventListener("click", showModal);
-  });
+  // pvprInfos.forEach((pvprInfo) => {
+  //   pvprInfo.addEventListener("click", showModal);
+  // });
 
-  closeModalButton.addEventListener("click", hideModal);
-  overlay.addEventListener("click", hideModal);
+  // closeModalButton.addEventListener("click", hideModal);
+  // overlay.addEventListener("click", hideModal);
 
   // Calculation Price
 
@@ -612,4 +597,79 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  // Функція для підменю
+
+  const menuItems = document.querySelectorAll(".menu-item > a");
+
+  // Додаємо обробник подій для кожного посилання
+  menuItems.forEach((menuItem) => {
+    menuItem.addEventListener("click", (event) => {
+      // Відмінити стандартну поведінку посилання
+      event.preventDefault();
+
+      // Знаходимо батьківський контейнер .menu-item
+      const parentMenuItem = menuItem.closest(".menu-item");
+
+      // Перевіряємо, чи .menu-item знаходиться у батьківському контейнері <header>
+      const isMenuItemInHeader = parentMenuItem.closest("header");
+
+      if (isMenuItemInHeader) {
+        // Отримуємо список всіх .menu-item елементів
+        const allMenuItems = document.querySelectorAll(".menu-item");
+
+        // Закриваємо всі .menu-item, крім поточного
+        allMenuItems.forEach((item) => {
+          if (item !== parentMenuItem) {
+            item.classList.remove("open");
+          }
+        });
+        // updateShadow();
+      }
+
+      // Переключаємо клас .open для поточного .menu-item
+      parentMenuItem.classList.toggle("open");
+      if (isMenuItemInHeader && window.innerWidth > 991.5) {
+        // Отримуємо батьківський контейнер .header_content
+        const headerContent = parentMenuItem.closest(".header_content");
+
+        // Перезадаємо властивість тіні (box-shadow) відповідно до наявності класу .open
+        if (parentMenuItem.classList.contains("open")) {
+          headerContent.style.boxShadow = "none";
+        } else {
+          console.log(parentMenuItem);
+          headerContent.style.boxShadow = "0px 6px 6px -7px rgba(0, 0, 0, 0.2)";
+        }
+
+        document.addEventListener("click", (event) => {
+          if (
+            !event.target.closest(".sub-menu") &&
+            !event.target.closest(".menu-item")
+          ) {
+            document.querySelectorAll(".menu-item.open").forEach((menuItem) => {
+              if (menuItem.closest("header")) {
+                menuItem.classList.remove("open");
+                // Update boxShadow or any other logic you need to execute on menu item close
+              }
+            });
+          }
+        });
+      }
+    });
+  });
+
+  // Оновлення тіні
+  const updateShadow = () => {
+    const headerContent = document.querySelector(".header_content");
+    if (headerContent && window.innerWidth > 991.5) {
+      console.log("Set shadow");
+      headerContent.style.boxShadow = "0px 6px 6px -7px rgba(0, 0, 0, 0.2)";
+    } else if (headerContent) {
+      console.log("Remove shadow");
+      headerContent.style.boxShadow = "none";
+    } else {
+      console.log("headerContent is not defined");
+    }
+  };
+  window.addEventListener("resize", updateShadow);
 });

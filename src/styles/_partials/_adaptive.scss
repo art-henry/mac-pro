@@ -18,8 +18,8 @@
     .banner_text_block {
       font-size: 2rem;
     }
-    .banner_link_section {
-      .cities {
+    .banner_links_section {
+      .banner_text_links {
         font-size: 3rem;
       }
     }
@@ -51,9 +51,9 @@
     .banner_info_section {
       margin-top: 1.5rem;
     }
-    .banner_link_section {
+    .banner_links_section {
       margin-top: 1.5rem;
-      .cities {
+      .banner_text_links {
         font-size: 2.5rem;
         // min-width: 170px;
       }
@@ -103,9 +103,9 @@
       }
     }
 
-    .banner_link_section {
+    .banner_links_section {
       margin-top: 1.5rem;
-      .cities {
+      .banner_text_links {
         font-size: 2.2rem;
         // min-width: 120px;
       }
@@ -149,7 +149,7 @@
   .header_content {
     height: 100%;
     padding: 2rem 5rem 0 0;
-
+    box-shadow: none;
     nav {
       display: none;
     }
@@ -158,23 +158,11 @@
     top: -3rem;
   }
   .nav_menu {
-    display: none !important;
+    display: none;
   }
   // .catalog_menu {
   //   display: none !important;
   // }
-  .catalog_menu_items {
-    grid-template-columns: repeat(auto-fit, 10rem);
-    margin-bottom: 5rem;
-    gap: 4rem;
-  }
-  .catalog_menu_item {
-    gap: 0;
-    img {
-      max-width: 100%;
-      max-height: 100%;
-    }
-  }
 
   .product_description_container {
     .product_specs {
@@ -213,9 +201,10 @@
     max-width: 100%;
   }
   .banner_info_section {
+    margin-top: 2rem;
     max-width: 100%;
     margin-right: 0;
-    margin-top: 6rem;
+    // margin-top: 4rem;
     .banner_title_block {
       font-size: 4rem;
       line-height: 4rem;
@@ -229,8 +218,8 @@
     .banner_text_block {
       font-size: 1.8rem;
     }
-    .banner_link_section {
-      .cities {
+    .banner_links_section {
+      .banner_text_links {
         font-size: 2.5rem;
         // min-width: 155px;
       }
@@ -309,8 +298,8 @@
     .banner_text_block {
       font-size: 1.6rem;
     }
-    .banner_link_section {
-      .cities {
+    .banner_links_section {
+      .banner_text_links {
         font-size: 2.2rem;
         // min-width: 135px;
       }
@@ -373,6 +362,7 @@
     }
   }
   .banner_info_section {
+    margin-top: 0;
     .banner_title_block {
       font-size: 2.4rem;
       line-height: 2.4rem;
@@ -385,8 +375,8 @@
     .banner_text_block {
       font-size: 1.3rem;
     }
-    .banner_link_section {
-      .cities {
+    .banner_links_section {
+      .banner_text_links {
         font-size: 1.5rem;
         // min-width: auto;
       }
@@ -452,7 +442,7 @@
 }
 @media (min-width: 992px) {
   .button_mobimenu_container,
-  .aside_nav_menu {
+  aside {
     display: none !important;
   }
 }
